@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zucc.wl1145_mjy1136.personalassistant">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/title_activity_start">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".calendar.CalendarAddActivity" />
+        <activity android:name=".calendar.CalendarTodayActivity" />
+        <activity android:name=".calendar.CalendarEditActivity" />
+        <activity android:name=".calendar.CalendarSpecificActivity" />
+        <activity android:name=".alarm.AlarmActivity" >
+            <!--<intent-filter>
+            <action android:name="package com.zucc.wl1145_mjy1136.personalassistant.alarm.ACTION"/>
+            <category android:name="android.intent.category.DEFAULT"></category>
+        </intent-filter>-->
+
+
+    </activity>
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".InformationActivity"></activity>
+    </application>
+
+</manifest>

@@ -125,10 +125,12 @@ public class ExpenseMainActivity extends AppCompatActivity {
             list.addFirst(entry.getValue());
         }
         //边界值处理
-        listItem=new ExpenseListItem();
-        listItem.setType(ExpenseListItem.TAG);
-        listItem.setTag(predate,sum_income,sum_cost);
-        list.addFirst(listItem);
+        if(!list.isEmpty()) {
+            listItem = new ExpenseListItem();
+            listItem.setType(ExpenseListItem.TAG);
+            listItem.setTag(predate, sum_income, sum_cost);
+            list.addFirst(listItem);
+        }
     }
     class MyAdapter extends BaseAdapter {
         private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");

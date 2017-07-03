@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
+import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button openButton;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
          //侧栏id
         Button buttonCalendar = (Button)findViewById(R.id.item3_ce);
+        Button buttonExpense = (Button)findViewById(R.id.item4_ce);
         Button buttonQuit = (Button)findViewById(R.id.item6_ce);
 
         //退出程序
@@ -67,23 +69,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //
+        buttonExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, ExpenseMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_ce" >
+
+    <RelativeLayout
+        android:id="@+id/linear_layout1_expense_main"
+        android:background ="@drawable/title_background1"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/back_expense_main"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/back_button_selector" />
+
+        <TextView
+            android:id="@+id/textView1_expense_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="60dip"
+            android:layout_marginTop="10dip"
+            android:layout_toRightOf="@id/back_expense_main"
+            android:textColor="@android:color/white"
+            android:textSize="18dip"
+            android:text="收支管理" />
+
+        <Button
+            android:id="@+id/add_expense_main"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dip"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/add_button_selector" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linear_layout2_expense_main"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_below="@id/linear_layout1_expense_main"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_tongji_main" >
+
+        <TextView
+            android:id="@+id/textview3_expense_main"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:text="\t本月共计收入：000"
+            android:textSize="14dp"/>
+
+        <ImageView
+            android:id="@+id/imageview2_expense_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/jiangetiao" />
+
+        <TextView
+            android:id="@+id/textview4_expense_main"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:text="\t本月共计支出：000"
+            android:textSize="14dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView5_expense_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linear_layout2_expense_main"
+        android:layout_marginTop="10dip"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        android:textSize="16dip"
+        android:text="本月收支情况" />
+
+    <ListView
+        android:id="@+id/listview_expense_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5_expense_main"
+        android:layout_marginTop="10dip"
+        android:scrollbars="none"
+        android:divider="@drawable/jiangetiao_list" >
+    </ListView>
+
+</RelativeLayout>

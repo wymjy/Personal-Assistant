@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 使用Style设置滚动条样式-->
+    <style name="myTabLayout" parent="Widget.Design.TabLayout">
+        <!--tab的布局-->
+        <item name="tabGravity">fill</item>
+        <!--tab下面的滚动条的颜色-->
+        <item name="tabIndicatorColor">#ffffff</item>
+        <!--将tab设置成滚动-->
+        <item name="tabMode">scrollable</item>
+        <!--最小的tab宽度-->
+        <item name="tabMinWidth">60dp</item>
+        <!--tab前的留白，长度设为与tabMinWidth一样-->
+        <item name="tabContentStart">60dp</item>
+    </style>
+
 </resources>

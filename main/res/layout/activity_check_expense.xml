@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_check">
+
+    <RelativeLayout
+        android:id="@+id/linear_layout1"
+        android:background ="@drawable/title_background1"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/back_check_expense"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_button_selector" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="80dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="10dip"
+            android:layout_toRightOf="@id/back_check_expense"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="查看收支" />
+
+        <Button
+            android:id="@+id/delete_check_expense"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/delete_button_selector"/>
+        <Button
+            android:id="@+id/edit_check_expense"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/delete_check_expense"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/edit_button_selector"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/type_check_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_layout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:textSize="20dip"
+        android:textColor="@android:color/tertiary_text_dark"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageview1_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/type_check_expense"
+        android:background="@drawable/jiangetiao_list1"/>
+
+    <TextView
+        android:id="@+id/name_check_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview1_check_calendar"
+        android:textColor="@android:color/white"
+        android:textSize="18dip"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageview2_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_check_expense"
+        android:background="@drawable/jiangetiao_list1"/>
+
+    <TextView
+        android:id="@+id/date_check_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview2_check_calendar"
+        android:textColor="@android:color/white"
+        android:textSize="18dip"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageview3_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_check_expense"
+        android:background="@drawable/jiangetiao_list1"/>
+
+    <TextView
+        android:id="@+id/mount_check_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/imageview3_check_calendar"
+        android:textSize="18dip"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageview4_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mount_check_expense"
+        android:background="@drawable/jiangetiao_list1"/>
+
+    <TextView
+        android:id="@+id/description_check_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview4_check_calendar"
+        android:textSize="18dip"
+        android:textColor="@android:color/white"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageview5_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description_check_expense"
+        android:background="@drawable/jiangetiao_list1"/>
+
+</RelativeLayout>

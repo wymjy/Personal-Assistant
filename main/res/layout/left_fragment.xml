@@ -212,7 +212,7 @@
                 android:layout_toRightOf="@id/image8_ce"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dip"
-                android:text="综合执行能力"/>
+                android:text="个人收支管理"/>
 
         </RelativeLayout>
 

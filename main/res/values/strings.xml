@@ -5,6 +5,10 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
 
+    <string-array name="spinner_add_expense">
+        <item>支出</item>
+        <item>收入</item>
+    </string-array>
     <string-array name="affair">
         <item>待办事项1 今天下午1:00</item>
         <item>待办事项2 今天下午2:00</item>

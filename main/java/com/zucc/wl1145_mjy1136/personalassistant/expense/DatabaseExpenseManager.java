@@ -9,27 +9,30 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by wanglei on 2017/7/2.
  */
-public class MyDatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseExpenseManager extends SQLiteOpenHelper {
     private static final String DATABASENAME = "PA.db" ;	// 数据库名称
-    public static final String CREATE_COSTITEM="create table ExpenseItem (" +
+    public static final String CREATE_EXPENSEITEM="create table ExpenseItem (" +
             "id integer primary key autoincrement," +
+            "user_id varchar(20),"+
             "date long," +
             //"image integer," +
             "mount real," +
             "mount_state text," +
             "class_text text," +
-            "comment text)";
+            "comment text," +
+            "FOREIGN KEY (user_id) REFERENCES UserItem(user_id))";
     private Context mContext;
-    public MyDatabaseHelper(Context context){
+    public DatabaseExpenseManager(Context context){
         super(context, DATABASENAME, null, 1);
         mContext=context;
     }
 
-    public void insert(/*int image,*/ long date, String type, String mount_state , String comment ,double mount) {
+    public void insert(/*int image,*/String user_id, long date, String type, String mount_state , String comment ,double mount) {
         SQLiteDatabase db = super.getWritableDatabase(); 	// 取得数据库操作对象
         ContentValues cv = new ContentValues() ;		// 定义ContentValues对象
         // 设置字段内容
         //cv.put("image",image);
+        cv.put("user_id", user_id);
         cv.put("date", date) ;
         cv.put("class_text",type);
         cv.put("mount_state",mount_state);
@@ -62,9 +65,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return result ;
     }
 
+    public Cursor queryByUser(String user_id){
+        SQLiteDatabase db = this.getReadableDatabase();	// 取得SQLiteDatabase
+        String sql = "select * from ExpenseItem where user_id='"+user_id+"'" ;	// 定义SQL
+        Cursor cursor = db.rawQuery(sql, null) ;		// 不设置查询参数
+        return cursor ;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_COSTITEM);
+        db.execSQL(CREATE_EXPENSEITEM);
     }
 
     @Override

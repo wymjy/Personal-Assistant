@@ -17,7 +17,7 @@ import java.util.Date;
  * Created by wanglei on 2017/7/3.
  */
 public class ExpenseCheckActivity extends AppCompatActivity{
-    private MyDatabaseHelper dbHelper;
+    private DatabaseExpenseManager dbHelper;
     private ExpenseListItem expenseListItem;
     private Button back;
     private Button delete;
@@ -34,7 +34,7 @@ public class ExpenseCheckActivity extends AppCompatActivity{
 
         //取出intent对象的的extras数据
         final long itemdate = getIntent().getExtras().getLong("itemdate");
-        dbHelper = new MyDatabaseHelper(ExpenseCheckActivity.this);
+        dbHelper = new DatabaseExpenseManager(ExpenseCheckActivity.this);
         expenseListItem = dbHelper.queryByDate(itemdate);
 
         back = (Button)findViewById(R.id.back_check_expense);

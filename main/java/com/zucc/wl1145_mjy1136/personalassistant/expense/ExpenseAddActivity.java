@@ -1,7 +1,6 @@
 package com.zucc.wl1145_mjy1136.personalassistant.expense;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.user.DatabaseUserManager;
 
 import java.util.Date;
 
@@ -18,7 +18,7 @@ import java.util.Date;
  * Created by wanglei on 2017/7/2.
  */
 public class ExpenseAddActivity extends AppCompatActivity {
-    private MyDatabaseHelper dbHelper;
+    private DatabaseExpenseManager dbHelper;
     private String mount_state;
     private long date_now;
 
@@ -43,8 +43,8 @@ public class ExpenseAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 date_now = (new Date()).getTime();
-                dbHelper = new MyDatabaseHelper(ExpenseAddActivity.this);
-                dbHelper.insert(date_now,type.getText().toString(),mount_state,
+                dbHelper = new DatabaseExpenseManager(ExpenseAddActivity.this);
+                dbHelper.insert(DatabaseUserManager.currentUser,date_now,type.getText().toString(),mount_state,
                         description.getText().toString(), Double.valueOf(mount.getText().toString()));
                 finish();
             }

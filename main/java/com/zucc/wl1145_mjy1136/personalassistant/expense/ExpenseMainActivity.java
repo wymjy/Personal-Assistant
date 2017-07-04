@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.user.DatabaseUserManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,7 +29,7 @@ import java.util.TreeMap;
  */
 public class ExpenseMainActivity extends AppCompatActivity {
 
-    private MyDatabaseHelper dbHelper;
+    private DatabaseExpenseManager dbHelper;
     private MyAdapter adapter;
     private Map<Long,ExpenseListItem> map=null;
     private LinkedList<ExpenseListItem> list=new LinkedList<ExpenseListItem>();
@@ -86,9 +87,9 @@ public class ExpenseMainActivity extends AppCompatActivity {
     public void initData(){
         map = new TreeMap<Long,ExpenseListItem>();
         ExpenseListItem listItem;
-        dbHelper=new MyDatabaseHelper(this);
+        dbHelper=new DatabaseExpenseManager(this);
         SQLiteDatabase db=dbHelper.getWritableDatabase();
-        Cursor cursor=db.query("ExpenseItem",null,null,null,null,null,null);
+        Cursor cursor=dbHelper.queryByUser(DatabaseUserManager.currentUser);
         if(cursor.moveToFirst()){
             do{
                 listItem=new ExpenseListItem();

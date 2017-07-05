@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
-import com.zucc.wl1145_mjy1136.personalassistant.user.DatabaseUserManager;
+import com.zucc.wl1145_mjy1136.personalassistant.db.ExpenseDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ import java.util.Date;
  * Created by wanglei on 2017/7/2.
  */
 public class ExpenseAddActivity extends AppCompatActivity {
-    private DatabaseExpenseManager dbHelper;
+    private ExpenseDataOperation expenseDataOperation;
     private String mount_state;
     private long date_now;
 
@@ -43,9 +44,9 @@ public class ExpenseAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 date_now = (new Date()).getTime();
-                dbHelper = new DatabaseExpenseManager(ExpenseAddActivity.this);
-                dbHelper.insert(DatabaseUserManager.currentUser,date_now,type.getText().toString(),mount_state,
-                        description.getText().toString(), Double.valueOf(mount.getText().toString()));
+                expenseDataOperation = new ExpenseDataOperation(ExpenseAddActivity.this);
+                expenseDataOperation.insert(UserDataOperation.currentUser,date_now,type.getText().
+                        toString(),mount_state, description.getText().toString(), Double.valueOf(mount.getText().toString()));
                 finish();
             }
         });
@@ -64,7 +65,6 @@ public class ExpenseAddActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //为spinner绑定适配器，书写标题信息，绑定监听事件。
         spinner.setAdapter(adapter);
-        //spinner.setPrompt("任务难度");
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> arg0, View arg1,

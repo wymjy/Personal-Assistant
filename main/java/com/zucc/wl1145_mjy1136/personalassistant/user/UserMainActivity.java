@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
-import com.zucc.wl1145_mjy1136.personalassistant.expense.DatabaseExpenseManager;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 
 /**
  * Created by wanglei on 2017/7/4.
@@ -21,11 +21,11 @@ public class UserMainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main_user);
         user_name = (TextView)findViewById(R.id.user_name);
         quit = (Button) findViewById(R.id.user_quit);
-        user_name.setText(DatabaseUserManager.currentUser);
+        user_name.setText(UserDataOperation.currentUser);
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseUserManager.currentUser="";
+                UserDataOperation.currentUser="";
                 finish();
             }
         });

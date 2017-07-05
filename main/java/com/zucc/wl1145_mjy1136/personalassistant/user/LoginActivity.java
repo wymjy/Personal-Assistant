@@ -9,12 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 
 /**
  * Created by wanglei on 2017/7/4.
  */
 public class LoginActivity extends AppCompatActivity{
-    private DatabaseUserManager dbu;
+    private UserDataOperation userDataOperation;
 
     private EditText username;
     private EditText userpassword;
@@ -39,12 +40,12 @@ public class LoginActivity extends AppCompatActivity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbu = new DatabaseUserManager(LoginActivity.this);
-                String info = dbu.checkLogin(username.getText().toString(), userpassword.getText().toString());
+                userDataOperation = new UserDataOperation(LoginActivity.this);
+                String info = userDataOperation.checkLogin(username.getText().toString(), userpassword.getText().toString());
                 if(!info.equals("yes"))
                     Toast.makeText(LoginActivity.this, info, Toast.LENGTH_LONG).show();
                 else{
-                    DatabaseUserManager.currentUser = username.getText().toString();
+                    UserDataOperation.currentUser = username.getText().toString();
                     finish();
                 }
             }

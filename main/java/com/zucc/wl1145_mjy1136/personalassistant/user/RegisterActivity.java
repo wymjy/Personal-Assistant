@@ -8,12 +8,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 
 /**
  * Created by wanglei on 2017/7/4.
  */
 public class RegisterActivity extends AppCompatActivity {
-    private DatabaseUserManager dbu;
+    private UserDataOperation userDataOperation;
 
     private EditText username;
     private EditText password;
@@ -38,8 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbu = new DatabaseUserManager(RegisterActivity.this);
-                String info = dbu.insertRegi(username.getText().toString(),
+                userDataOperation = new UserDataOperation(RegisterActivity.this);
+                String info = userDataOperation.insertRegi(username.getText().toString(),
                         password.getText().toString(),password2.getText().toString());
                 Toast.makeText(RegisterActivity.this, info, Toast.LENGTH_LONG).show();
                 if(info.equals("注册成功！"))

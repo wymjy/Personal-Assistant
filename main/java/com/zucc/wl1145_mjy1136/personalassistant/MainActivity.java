@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
-import com.zucc.wl1145_mjy1136.personalassistant.user.DatabaseUserManager;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!DatabaseUserManager.currentUser.equals("")){
+                if(!UserDataOperation.currentUser.equals("")){
                     Intent intent = new Intent(MainActivity.this, UserMainActivity.class);
                     startActivity(intent);
                 }
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 mSlidingMenu.open();
-                Toast.makeText(MainActivity.this, DatabaseUserManager.currentUser, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, UserDataOperation.currentUser, Toast.LENGTH_SHORT).show();
             }
         });
 

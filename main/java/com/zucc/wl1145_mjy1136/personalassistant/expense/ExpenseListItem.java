@@ -12,8 +12,8 @@ public class ExpenseListItem {
     private String item_mount_state; //"in" or "out"
     private double tag_cost;
     private double tag_income;
-    final static int TAG=1;
-    final static int ITEM=2;
+    public final static int TAG=1;
+    public final static int ITEM=2;
     public void setTag(long date,double tag_income,double tag_cost){
         this.tag_income=tag_income;
         this.tag_cost=tag_cost;

@@ -15,7 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
-import com.zucc.wl1145_mjy1136.personalassistant.user.DatabaseUserManager;
+import com.zucc.wl1145_mjy1136.personalassistant.db.ExpenseDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.db.MyDatabaseHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +31,7 @@ import java.util.TreeMap;
  */
 public class ExpenseMainActivity extends AppCompatActivity {
 
-    private DatabaseExpenseManager dbHelper;
+    private ExpenseDataOperation expenseDataOperation;
     private MyAdapter adapter;
     private Map<Long,ExpenseListItem> map=null;
     private LinkedList<ExpenseListItem> list=new LinkedList<ExpenseListItem>();
@@ -85,25 +87,10 @@ public class ExpenseMainActivity extends AppCompatActivity {
     }
 
     public void initData(){
-        map = new TreeMap<Long,ExpenseListItem>();
+//        map = new TreeMap<Long,ExpenseListItem>();
         ExpenseListItem listItem;
-        dbHelper=new DatabaseExpenseManager(this);
-        SQLiteDatabase db=dbHelper.getWritableDatabase();
-        Cursor cursor=dbHelper.queryByUser(DatabaseUserManager.currentUser);
-        if(cursor.moveToFirst()){
-            do{
-                listItem=new ExpenseListItem();
-                listItem.setType(ExpenseListItem.ITEM);
-                listItem.setItem(//cursor.getInt(cursor.getColumnIndex("image")),
-                        cursor.getString(cursor.getColumnIndex("class_text")),
-                        cursor.getString(cursor.getColumnIndex("comment")),
-                        cursor.getDouble(cursor.getColumnIndex("mount")),
-                        cursor.getString(cursor.getColumnIndex("mount_state")),
-                        cursor.getLong(cursor.getColumnIndex("date")));
-                map.put(listItem.get_date(),listItem);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
+        expenseDataOperation=new ExpenseDataOperation(this);
+        map = expenseDataOperation.queryByUser(UserDataOperation.currentUser);
         Set<Map.Entry<Long,ExpenseListItem>> entrySet=map.entrySet();
         long predate=0;
         double sum_income=0,sum_cost=0;

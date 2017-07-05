@@ -59,7 +59,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dp"
             android:gravity="center"
-            android:text="\t本月共计收入：000"
+            android:text="\t共计收入：000"
             android:textSize="14dp"/>
 
         <ImageView
@@ -74,7 +74,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dp"
             android:gravity="center"
-            android:text="\t本月共计支出：000"
+            android:text="\t共计支出：000"
             android:textSize="14dp"/>
 
     </LinearLayout>

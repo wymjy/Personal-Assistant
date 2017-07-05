@@ -41,6 +41,9 @@
         <activity android:name=".expense.ExpenseMainActivity"/>
         <activity android:name=".expense.ExpenseAddActivity"/>
         <activity android:name=".expense.ExpenseCheckActivity"/>
+        <activity android:name=".user.LoginActivity"/>
+        <activity android:name=".user.RegisterActivity"/>
+        <activity android:name=".user.UserMainActivity"/>
     </application>
 
 </manifest>

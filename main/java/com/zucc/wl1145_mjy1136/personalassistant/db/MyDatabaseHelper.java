@@ -9,9 +9,23 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-
-    public static final String CREATE_CALENDAR = "create table cal1(" +
+    private static final String DATABASENAME = "PA.db" ;	// 数据库名称
+    public static final String CREATE_USERITEM="create table UserItem (" +  //用户表
+            "user_id varchar(20) primary key," +
+            "password varchar(20))" ;
+    public static final String CREATE_EXPENSEITEM="create table ExpenseItem (" +    //收支表
+            "id integer primary key autoincrement," +
+            "user_id varchar(20),"+
+            "date long," +
+            //"image integer," +
+            "mount real," +
+            "mount_state text," +
+            "class_text text," +
+            "comment text," +
+            "FOREIGN KEY (user_id) REFERENCES UserItem(user_id))";
+    public static final String CREATE_CALENDAR = "create table cal1(" + //日程表
             "calendarNo integer primary key autoincrement," +
+            "user_id varchar(20)," +
             "calendarName text," +
             "calendarDate date," +
             "calendarTime time," +
@@ -20,20 +34,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "repetition integer," +
             "advanceTime integer," +
             "valid integer " +
-            "constraint c1 check ( valid in (1,0) ));";
+            "constraint c1 check ( valid in (1,0) )," +
+            "FOREIGN KEY (user_id) REFERENCES UserItem(user_id));";
 //	public static final String CREATE_CALENDAR = "create table cal1(calendarNo integer primary key,calendarName text,repetition integer,advanceTime integer);";
 
     private Context mContext;
 
-    public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory
-            factory, int version) {
-        super(context, name, factory, version);
-        mContext = context;
+    public MyDatabaseHelper(Context context) {
+        super(context, DATABASENAME, null, 1);
+        mContext=context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) { //创建表
         try {
+            db.execSQL(CREATE_USERITEM);
+            db.execSQL(CREATE_EXPENSEITEM);
             db.execSQL(CREATE_CALENDAR);
 //		 Toast.makeText(mContext, "Create succeeded", Toast.LENGTH_SHORT).show();
         } catch(Exception e) {

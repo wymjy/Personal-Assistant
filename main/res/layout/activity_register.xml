@@ -31,11 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/regi_name" android:gravity="end"
+            android:gravity="end"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="2" android:layout_marginTop="52dp"
             android:text="用户名：" android:textSize="20sp"/>
         <EditText
+            android:id="@+id/regi_name"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="3" android:layout_marginTop="50dp"
             android:layout_marginRight="40dp"/>
@@ -44,11 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/regi_password" android:gravity="end"
+            android:gravity="end"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="2" android:layout_marginTop="20dp"
             android:text="密码：" android:textSize="20sp" />
         <EditText
+            android:id="@+id/regi_password"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="3" android:layout_marginTop="20dp"
             android:layout_marginRight="40dp" android:inputType="textPassword"/>
@@ -57,17 +59,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/regi_confirm" android:gravity="end"
+            android:gravity="end"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="2" android:layout_marginTop="20dp"
             android:text="确认密码：" android:textSize="20sp" />
         <EditText
+            android:id="@+id/regi_confirm"
             android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="3" android:layout_marginTop="20dp"
             android:layout_marginRight="40dp" android:inputType="textPassword"/>
     </LinearLayout>
     <Button
-        android:id="@+id/login_register"
+        android:id="@+id/regi_register"
         android:layout_width="200dp" android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"
         android:text="注册"/>

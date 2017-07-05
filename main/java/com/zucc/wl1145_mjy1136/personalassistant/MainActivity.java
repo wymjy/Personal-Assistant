@@ -7,18 +7,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+import android.widget.ImageButton;
+import android.widget.Toast;
+>>>>>>> d08fc473920faf74f8b0af1f7d5799c23f99c385
 
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.MyCalendar;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
+import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
     private CalendarDataOperation oper;
     private List<MyCalendar> records;
+=======
+    private ImageButton userButton;
+>>>>>>> d08fc473920faf74f8b0af1f7d5799c23f99c385
     private Button openButton;
     private Button closeButton;
     private SlidingMenu mSlidingMenu;
@@ -31,14 +43,31 @@ public class MainActivity extends AppCompatActivity {
                 .from(this).inflate(R.layout.activity_main, null), LayoutInflater
                 .from(this).inflate(R.layout.left_fragment, null));
         setContentView(mSlidingMenu);//注意setContentView需要换为我们的SlidingMenu
+        userButton = (ImageButton) findViewById(R.id.head);
         openButton = (Button) findViewById(R.id.button_more_main);
         closeButton = (Button) findViewById(R.id.button_close);
+        //用户头像
+        userButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!UserDataOperation.currentUser.equals("")){
+                    Intent intent = new Intent(MainActivity.this, UserMainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         openButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 mSlidingMenu.open();
+                //Toast.makeText(MainActivity.this, UserDataOperation.currentUser, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -78,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //
+        //收支管理
         buttonExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

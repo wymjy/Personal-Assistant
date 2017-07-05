@@ -27,7 +27,7 @@ public class CalendarDataOperation {
 
     public CalendarDataOperation(Context context) {
         mContext = context;
-        helper = new MyDatabaseHelper(mContext, "db1", null, 1);
+        helper = new MyDatabaseHelper(mContext);
         database = helper.getWritableDatabase();
 //		Toast.makeText(context, "Create succeeded", Toast.LENGTH_SHORT).show();
     }
@@ -42,7 +42,8 @@ public class CalendarDataOperation {
         //查询出当天的记录
 //		Cursor cursor = database.rawQuery("select * from cal1 where calendarDate = ?", new String[]{currentDate});
         //查询出所有的记录
-        cursor = database.rawQuery("select * from cal1 order by calendarDate desc;",null);
+        cursor = database.rawQuery("select * from cal1 where user_id = ? order by calendarDate desc;",
+                new String[]{UserDataOperation.currentUser});
         MyCalendar cal = new MyCalendar();
         List<MyCalendar> records = new ArrayList<MyCalendar>();
         while (cursor.moveToNext()) {
@@ -67,7 +68,8 @@ public class CalendarDataOperation {
         CheckValid check = new CheckValid();
         String currentDate = check.getCurrentDate();
         //查询出当天的记录
-        cursor = database.rawQuery("select * from cal1 where calendarDate = ?", new String[]{currentDate});
+        cursor = database.rawQuery("select * from cal1 where calendarDate = ? and user_id = ?",
+                new String[]{currentDate, UserDataOperation.currentUser});
         //查询出所有的记录
 //		cursor = database.rawQuery("select * from cal1 order by calendarDate desc;",null);
         MyCalendar cal = new MyCalendar();

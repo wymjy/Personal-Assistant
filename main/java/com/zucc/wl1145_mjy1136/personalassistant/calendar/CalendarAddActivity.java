@@ -18,6 +18,7 @@ import android.widget.TimePicker;
 import com.zucc.wl1145_mjy1136.personalassistant.R;
 import com.zucc.wl1145_mjy1136.personalassistant.alarm.AlarmManage;
 import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 
 import java.util.Calendar;
 
@@ -302,7 +303,8 @@ public class CalendarAddActivity extends Activity {
 //				advanceTime = "1";
         oper = new CalendarDataOperation(this);
         oper.addAffair("insert into cal1 " +
-                "(calendarName," +
+                "(user_id," +
+                "calendarName," +
                 "calendarDate," +
                 "calendarTime," +
                 "place," +
@@ -310,7 +312,7 @@ public class CalendarAddActivity extends Activity {
                 "repetition," +
                 "advanceTime, " +
                 "valid )" +
-                "values(?,?,?,?,?,?,?,?);", new String[]{calendarName,date,time,place,description,repetition,advanceTime,"1"});
+                "values(?,?,?,?,?,?,?,?,?);", new String[]{UserDataOperation.currentUser,calendarName,date,time,place,description,repetition,advanceTime,"1"});
         //关闭本界面的数据连接
         oper.close();
     }

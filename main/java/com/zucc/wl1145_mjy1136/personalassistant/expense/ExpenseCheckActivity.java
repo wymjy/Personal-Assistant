@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.db.ExpenseDataOperation;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +18,7 @@ import java.util.Date;
  * Created by wanglei on 2017/7/3.
  */
 public class ExpenseCheckActivity extends AppCompatActivity{
-    private MyDatabaseHelper dbHelper;
+    private ExpenseDataOperation expenseDataOperation;
     private ExpenseListItem expenseListItem;
     private Button back;
     private Button delete;
@@ -34,8 +35,8 @@ public class ExpenseCheckActivity extends AppCompatActivity{
 
         //取出intent对象的的extras数据
         final long itemdate = getIntent().getExtras().getLong("itemdate");
-        dbHelper = new MyDatabaseHelper(ExpenseCheckActivity.this);
-        expenseListItem = dbHelper.queryByDate(itemdate);
+        expenseDataOperation = new ExpenseDataOperation(ExpenseCheckActivity.this);
+        expenseListItem = expenseDataOperation.queryByDate(itemdate);
 
         back = (Button)findViewById(R.id.back_check_expense);
         delete = (Button)findViewById(R.id.delete_check_expense);
@@ -48,7 +49,7 @@ public class ExpenseCheckActivity extends AppCompatActivity{
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper.deleteByDate(itemdate);
+                expenseDataOperation.deleteByDate(itemdate);
                 //反馈
                 Toast.makeText(ExpenseCheckActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
                 ExpenseCheckActivity.this.finish();

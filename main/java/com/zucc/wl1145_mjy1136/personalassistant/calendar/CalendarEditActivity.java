@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import com.zucc.wl1145_mjy1136.personalassistant.CheckValid;
+
 import com.zucc.wl1145_mjy1136.personalassistant.R;
 import com.zucc.wl1145_mjy1136.personalassistant.alarm.AlarmManage;
 import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;

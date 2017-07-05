@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
+
 import android.widget.TextView;
-=======
+
 import android.widget.ImageButton;
 import android.widget.Toast;
->>>>>>> d08fc473920faf74f8b0af1f7d5799c23f99c385
+
 
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
@@ -24,13 +24,15 @@ import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
+
     private CalendarDataOperation oper;
     private List<MyCalendar> records;
-=======
-    private ImageButton userButton;
->>>>>>> d08fc473920faf74f8b0af1f7d5799c23f99c385
+
+    private CircleImageView userButton;
+
     private Button openButton;
     private Button closeButton;
     private SlidingMenu mSlidingMenu;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 .from(this).inflate(R.layout.activity_main, null), LayoutInflater
                 .from(this).inflate(R.layout.left_fragment, null));
         setContentView(mSlidingMenu);//注意setContentView需要换为我们的SlidingMenu
-        userButton = (ImageButton) findViewById(R.id.head);
+        userButton = (CircleImageView) findViewById(R.id.head);
         openButton = (Button) findViewById(R.id.button_more_main);
         closeButton = (Button) findViewById(R.id.button_close);
         //用户头像
@@ -128,6 +130,18 @@ public class MainActivity extends AppCompatActivity {
             conclusionText += "目前您共有" + records.size() + "项日程";
         schedule.setText(conclusionText);
 
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        records = oper.getAllRecord();
+        schedule=(TextView)findViewById(R.id.textview2_main) ;
+        String conclusionText = "";
+        if(records.size() == 0)
+            conclusionText += "目前您还没有添加任何日程哦，赶快添加吧！";
+        else
+            conclusionText += "目前您共有" + records.size() + "项日程";
+        schedule.setText(conclusionText);
     }
 }

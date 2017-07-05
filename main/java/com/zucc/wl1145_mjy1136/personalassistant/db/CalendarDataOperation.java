@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.zucc.wl1145_mjy1136.personalassistant.CheckValid;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,32 +64,7 @@ public class CalendarDataOperation {
     }
 
     //检索出当前日期的编号、名称和日期
-    public List<MyCalendar> getTodayRecord() {
-        CheckValid check = new CheckValid();
-        String currentDate = check.getCurrentDate();
-        //查询出当天的记录
-        cursor = database.rawQuery("select * from cal1 where calendarDate = ? and user_id = ?",
-                new String[]{currentDate, UserDataOperation.currentUser});
-        //查询出所有的记录
-//		cursor = database.rawQuery("select * from cal1 order by calendarDate desc;",null);
-        MyCalendar cal = new MyCalendar();
-        List<MyCalendar> records = new ArrayList<MyCalendar>();
-        while (cursor.moveToNext()) {
-            cal = new MyCalendar();
-            cal.setCalendarNo(cursor.getString(0));//获取第一列的值,第一列的索引从0开始
-            cal.setCalendarName(cursor.getString(1));//获取第二列的值
-            cal.setDate(cursor.getString(2));//获取第三列的值
-            cal.setTime(cursor.getString(3));
-            cal.setPlace(cursor.getString(4));
-            cal.setDescription(cursor.getString(5));
-            cal.setRepetition(cursor.getString(6));
-            cal.setAdvanceTime(cursor.getString(7));
-            cal.setValid(cursor.getString(8));
-            records.add(cal);
-        }
-//		Toast.makeText(mContext, cal.getCalendarName(), Toast.LENGTH_SHORT).show();
-        return records;
-    }
+
 
     public void delete(String calendarNo) {
         database.execSQL("delete from cal1 where calendarNo = ?",new String[]{calendarNo});

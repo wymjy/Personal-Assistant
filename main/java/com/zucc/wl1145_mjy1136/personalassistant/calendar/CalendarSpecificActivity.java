@@ -104,7 +104,7 @@ public class CalendarSpecificActivity extends Activity {
         cal = oper.getRecord2(calendarNo);
         String tag = "onResume";
         Log.v(tag, "onResume is called");
-        calendarName = cal.getCalendarName();
+         calendarName = cal.getCalendarName();
         if(calendarName.length() == 0)
             calendarName = "未命名日程";
         date = cal.getDate();

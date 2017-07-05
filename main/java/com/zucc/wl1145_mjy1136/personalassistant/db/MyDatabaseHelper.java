@@ -25,7 +25,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "FOREIGN KEY (user_id) REFERENCES UserItem(user_id))";
     public static final String CREATE_CALENDAR = "create table cal1(" + //日程表
             "calendarNo integer primary key autoincrement," +
-            "user_id varchar(20)," +
             "calendarName text," +
             "calendarDate date," +
             "calendarTime time," +
@@ -35,6 +34,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "advanceTime integer," +
             "valid integer " +
             "constraint c1 check ( valid in (1,0) )," +
+            "user_id varchar(20)," +
             "FOREIGN KEY (user_id) REFERENCES UserItem(user_id));";
 //	public static final String CREATE_CALENDAR = "create table cal1(calendarNo integer primary key,calendarName text,repetition integer,advanceTime integer);";
 

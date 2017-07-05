@@ -34,17 +34,26 @@ public class ExpenseMainActivity extends AppCompatActivity {
     private ExpenseDataOperation expenseDataOperation;
     private MyAdapter adapter;
     private Map<Long,ExpenseListItem> map=null;
+    private Map<String,Double> summap=null;
     private LinkedList<ExpenseListItem> list=new LinkedList<ExpenseListItem>();
     private ListView listview;
     private Button back;
     private Button add;
+    private TextView incomecount;
+    private TextView outcomecount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_expense);
+        incomecount = (TextView)findViewById(R.id.textview3_expense_main);
+        outcomecount = (TextView)findViewById(R.id.textview4_expense_main);
         back=(Button)findViewById(R.id.back_expense_main);
         add=(Button)findViewById(R.id.add_expense_main);
+        expenseDataOperation=new ExpenseDataOperation(this);
+        summap=expenseDataOperation.countMount();
+        incomecount.setText("\t共计收入："+ summap.get("in"));
+        outcomecount.setText("\t共计支出："+summap.get("out"));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,11 +86,15 @@ public class ExpenseMainActivity extends AppCompatActivity {
         });
     }
 
+    //插入删除数据后返回页面及时更新
     @Override
     protected void onRestart() {
         super.onRestart();
         map.clear();
         list.clear();
+        summap=expenseDataOperation.countMount();
+        incomecount.setText("\t共计收入："+ summap.get("in"));
+        outcomecount.setText("\t共计支出："+summap.get("out"));
         initData();
         listview.setAdapter(adapter);
     }
@@ -89,7 +102,6 @@ public class ExpenseMainActivity extends AppCompatActivity {
     public void initData(){
 //        map = new TreeMap<Long,ExpenseListItem>();
         ExpenseListItem listItem;
-        expenseDataOperation=new ExpenseDataOperation(this);
         map = expenseDataOperation.queryByUser(UserDataOperation.currentUser);
         Set<Map.Entry<Long,ExpenseListItem>> entrySet=map.entrySet();
         long predate=0;

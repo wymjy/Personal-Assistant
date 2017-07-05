@@ -85,4 +85,19 @@ public class ExpenseDataOperation {
         return result;
     }
 
+    public Map<String,Double> countMount(){
+        Map<String,Double> result = new TreeMap();
+        SQLiteDatabase db = helper.getReadableDatabase();
+        String sql = "select mount_state,sum(mount) from ExpenseItem where user_id='"
+                +UserDataOperation.currentUser+ "' group by mount_state";
+        Cursor cursor = db.rawQuery(sql, null) ;
+        if(cursor.moveToFirst()){
+            do{
+                result.put(cursor.getString(0),cursor.getDouble(1));
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return result;
+    }
+
 }

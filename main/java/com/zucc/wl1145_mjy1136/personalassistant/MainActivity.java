@@ -1,19 +1,28 @@
 package com.zucc.wl1145_mjy1136.personalassistant;
 
 import android.content.Intent;
+import android.preference.TwoStatePreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
+import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.db.MyCalendar;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    private CalendarDataOperation oper;
+    private List<MyCalendar> records;
     private Button openButton;
     private Button closeButton;
     private SlidingMenu mSlidingMenu;
+    private TextView schedule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +87,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        oper = new CalendarDataOperation(this);
+        records = oper.getAllRecord();
+        schedule=(TextView)findViewById(R.id.textview2_main) ;
+        String conclusionText = "";
+        if(records.size() == 0)
+            conclusionText += "目前您还没有添加任何日程哦，赶快添加吧！";
+        else
+            conclusionText += "目前您共有" + records.size() + "项日程";
+        schedule.setText(conclusionText);
+
 
     }
 }

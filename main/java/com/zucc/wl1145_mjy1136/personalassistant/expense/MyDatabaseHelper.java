@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASENAME = "PA.db" ;	// 数据库名称
-    public static final String CREATE_COSTITEM="create table ExpenseItem (" +
+    public static final String CREATE_EXPENSEITEM="create table ExpenseItem (" +
             "id integer primary key autoincrement," +
             "date long," +
             //"image integer," +
@@ -64,7 +64,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_COSTITEM);
+        db.execSQL(CREATE_EXPENSEITEM);
     }
 
     @Override

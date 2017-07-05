@@ -28,11 +28,11 @@
 
 
 
-            <ImageButton
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/touxiang"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/touxiang"
                 android:layout_marginLeft="20dip"
                 android:layout_centerVertical="true"/>
 
@@ -59,95 +59,11 @@
             android:layout_below="@id/relative1_ce"/>
 
         <RelativeLayout
-            android:id="@+id/relative2_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/image0_ce">
-
-            <Button
-                android:id="@+id/item1_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/item_selector"/>
-
-            <ImageView
-                android:id="@+id/image2_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/plan"/>
-
-            <TextView
-                android:id="@+id/jiange1_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/image2_ce"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dip"
-                android:text="所有计划"/>
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/image3_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@drawable/jiangetiao_ce"
-            android:layout_marginLeft="7dip"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/relative2_ce"/>
-
-        <RelativeLayout
-            android:id="@+id/relative3_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/image3_ce">
-
-            <Button
-                android:id="@+id/item2_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/item_selector"/>
-
-            <ImageView
-                android:id="@+id/image4_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/task"/>
-
-            <TextView
-                android:id="@+id/jiange2_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/image4_ce"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dip"
-                android:text="所有独立任务"/>
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/image5_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@drawable/jiangetiao_ce"
-            android:layout_marginLeft="7dip"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/relative3_ce"/>
-
-        <RelativeLayout
             android:id="@+id/relative4_ce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/image5_ce">
+            android:layout_below="@id/image0_ce">
 
             <Button
                 android:id="@+id/item3_ce"

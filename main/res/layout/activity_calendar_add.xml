@@ -109,7 +109,6 @@
         android:paddingLeft="80dip" />
 
 
-
     <Button
         android:id="@+id/save_add_calendar"
         android:layout_width="wrap_content"

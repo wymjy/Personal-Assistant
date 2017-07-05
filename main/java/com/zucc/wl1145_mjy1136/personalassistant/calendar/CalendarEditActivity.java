@@ -212,10 +212,10 @@ public class CalendarEditActivity extends Activity {
 
 
         //从格式化的日期中提取出年、月、日
-        CheckValid check = new CheckValid();
-        year = check.getYearFromDate(date);
-        month = check.getMonthFromDate(date);
-        day = check.getDayFromDate(date);
+
+        year = Integer.parseInt(date.substring(0, 4));
+        month = Integer.parseInt(date.substring(5, 7));
+        day = Integer.parseInt(date.substring(8, 10));
 
         //将获取的日期显示在buttonDate上
         buttonDate.setText(year + "年" + month + "月" + day + "日");
@@ -268,9 +268,8 @@ public class CalendarEditActivity extends Activity {
 //		//在按钮上显示时间
 //        buttonTime.setText("" + hour + ":" + minute);
         //从格式化的时间中提取出时、分、秒
-        CheckValid check = new CheckValid();
-        hour = check.getHourFromTime(time);
-        minute = check.getMinuteFromTime(time);
+        hour = Integer.parseInt(time.substring(0, 2));
+        minute = Integer.parseInt(time.substring(3, 5));
 //		second = check.getSecondFromTime(time);
 
         //将获取的时间显示在buttonTime上

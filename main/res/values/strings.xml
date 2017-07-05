@@ -17,6 +17,15 @@
         <item>待办事项5 今天下午5:00</item>
         <item>待办事项6 今天下午6:00</item>
     </string-array>
+
+    <string-array name="spinner_music">
+        <item>喜剧之王</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
     <string-array name="spinner_repeat">
         <item>仅提醒一次</item>
         <item>每天提醒</item>

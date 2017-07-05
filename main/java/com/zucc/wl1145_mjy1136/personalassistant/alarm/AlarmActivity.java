@@ -20,8 +20,6 @@ import java.util.Calendar;
 public class AlarmActivity extends Activity {
     private MediaPlayer alarmMusic;
     private int calendarNo;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

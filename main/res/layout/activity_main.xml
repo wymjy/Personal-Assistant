@@ -100,7 +100,7 @@
         android:textColor="@android:color/white"
         android:textStyle="italic"
         android:textSize="16dip"
-        android:text="今天的日程安排"
+        android:text="欢迎来到个人助理"
         />
 
     <ListView

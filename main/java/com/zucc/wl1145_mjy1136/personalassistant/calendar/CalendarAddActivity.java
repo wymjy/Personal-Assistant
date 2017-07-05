@@ -29,6 +29,7 @@ public class CalendarAddActivity extends Activity {
     private EditText textDescription;
     private Spinner spinnerRepetition;
     private Spinner spinnerAdvanceTime;
+    private Spinner spinnerMusic;
     private Button save;
     private Button cancle;
 
@@ -71,6 +72,7 @@ public class CalendarAddActivity extends Activity {
 
         initSpinnerRepetition();
         initSpinnerPromition();
+        initSpinnerMusic();
         c = Calendar.getInstance();
         initDate();
         initTime();
@@ -111,6 +113,32 @@ public class CalendarAddActivity extends Activity {
         });
 
     }
+
+    public  void initSpinnerMusic(){
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_music,android.R.layout.simple_spinner_item);
+        //设置Spinner每个条目的显示样式
+        //3.声明一个ArrayAdapter并获取对象，用于配置Spinner显示的信息。
+        //对应参数说明：1.上下文变量；2.要显示的字符串Array；3.Spinner的显示样式
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //为spinner绑定适配器，书写标题信息，绑定监听事件。
+        spinnerRepetition.setAdapter(adapter);
+        spinnerRepetition.setPrompt("铃声选择");
+
+        spinnerRepetition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+                //获取所选择的重复次数
+                repetition = arg2 + 1 + "";
+//				Toast.makeText(CalendarAddActivity.this, "选择了" + (int)(arg2+1), Toast.LENGTH_LONG).show();
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+//				Toast.makeText(CalendarAddActivity.this, "未选中", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
 
     public void initSpinnerRepetition() {
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_repeat,android.R.layout.simple_spinner_item);

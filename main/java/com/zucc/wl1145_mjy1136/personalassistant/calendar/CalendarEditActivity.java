@@ -3,6 +3,9 @@ package com.zucc.wl1145_mjy1136.personalassistant.calendar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +30,11 @@ public class CalendarEditActivity extends Activity {
     private Calendar c;
     private CalendarDataOperation oper;
 
+    private MediaPlayer alarmMusic;
+    private String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调"};
+    private int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt};
+    private String musicId;
+
     private EditText textName;
     private Button buttonDate;
     private Button buttonTime;
@@ -34,6 +42,7 @@ public class CalendarEditActivity extends Activity {
     private EditText textDescription;
     private Spinner spinnerRepetition;
     private Spinner spinnerAdvanceTime;
+    private Button buttonMusic;
     private Button save;
     private Button cancle;
 
@@ -86,6 +95,7 @@ public class CalendarEditActivity extends Activity {
         textDescription = (EditText)findViewById(R.id.editText3_edit_calendar);
         spinnerRepetition = (Spinner)findViewById(R.id.spinner1_edit_calendar);
         spinnerAdvanceTime = (Spinner)findViewById(R.id.spinner2_edit_calendar);
+        buttonMusic = (Button)findViewById(R.id.music_edit_calendar);
         save = (Button)findViewById(R.id.save_edit_calendar);
         cancle =(Button)findViewById(R.id.cancle_edit_calendar);
 
@@ -104,6 +114,29 @@ public class CalendarEditActivity extends Activity {
         initDate();
         initTime();
 
+        buttonMusic.setText("铃声："+alarmName[0]);
+        buttonMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(CalendarEditActivity.this)
+                        .setTitle("请选择闹铃").setIcon(android.R.drawable.ic_dialog_info)
+                        .setSingleChoiceItems(alarmName, 0,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        alarmMusic.stop();
+                                        alarmMusic = MediaPlayer.create(CalendarEditActivity.this, alarmResouces[which]);
+                                        alarmMusic.setLooping(true);
+                                        alarmMusic.start();
+                                    }}
+                        ).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        musicId= String.valueOf(alarmResouces[which]);
+                    }
+                }).setNegativeButton("取消", null).show();
+            }
+        });
         //为“保存”按钮绑定监听器
         save.setOnClickListener(new View.OnClickListener() {
 
@@ -318,7 +351,7 @@ public class CalendarEditActivity extends Activity {
 //				提取下拉列表spinner的数据
 //				advanceTime = "1";
         oper = new CalendarDataOperation(this);
-        oper.updateDate(calendarNo, calendarName, date, time, place, description, repetition, advanceTime);
+        oper.updateDate(calendarNo, calendarName, date, time, place, description, repetition, advanceTime, musicId);
         //关闭本界面的数据连接
         oper.close();
     }

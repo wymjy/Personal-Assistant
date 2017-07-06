@@ -32,6 +32,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "calDescription text," +
             "repetition integer," +
             "advanceTime integer," +
+            "music_id integer," +
             "valid integer " +
             "constraint c1 check ( valid in (1,0) )," +
             "user_id varchar(20)," +

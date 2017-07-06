@@ -13,6 +13,7 @@ public class MyCalendar {
     private String description;//描述
     private String repetition; //提醒次数
     private String advanceTime;//提醒时间
+    private String music; //闹铃
     private String valid;
 
 
@@ -63,6 +64,12 @@ public class MyCalendar {
     }
     public void setAdvanceTime(String advanceTime) {
         this.advanceTime = advanceTime;
+    }
+    public String getMusic() {
+        return music;
+    }
+    public void setMusic(String music) {
+        this.music = music;
     }
     public String isValid() {
         return valid;

@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_check"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:background="@drawable/background_check" >
 
 
     <RelativeLayout
@@ -74,8 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
         android:layout_marginBottom="10dip"
+        android:layout_marginLeft="16dp"
         android:layout_below="@id/imageview0_check_calendar"
-        android:layout_centerHorizontal="true"
         android:text="Large Text"
         android:textColor="@android:color/tertiary_text_dark"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -92,13 +91,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageview1_check_calendar"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="10dip"
-        android:layout_marginLeft="140dip"
+        android:layout_alignLeft="@id/textView1_check_calendar"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
 
     <TextView
         android:id="@+id/textView3_check_calendar"
@@ -191,6 +188,22 @@
         android:layout_below="@id/textView7_check_calendar"
         android:background="@drawable/jiangetiao_list1"/>
 
+    <TextView
+        android:id="@+id/textView8_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView1_check_calendar"
+        android:layout_below="@id/imageview7_check_calendar"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <ImageView
+        android:id="@+id/imageview8_check_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView8_check_calendar"
+        android:background="@drawable/jiangetiao_list1"/>
 
 </RelativeLayout>

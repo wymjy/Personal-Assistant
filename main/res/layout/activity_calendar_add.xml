@@ -108,6 +108,14 @@
         android:gravity="center_horizontal"
         android:paddingLeft="80dip" />
 
+    <Button
+        android:id="@+id/music_add_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner2_add_calendar"
+        android:background="@drawable/datatime_button_selector"
+        android:layout_centerHorizontal="true"
+        android:text="选择铃声" />
 
     <Button
         android:id="@+id/save_add_calendar"
@@ -117,9 +125,8 @@
         android:layout_marginLeft="10dip"
         android:layout_marginRight="20dip"
         android:layout_marginTop="5dip"
-        android:layout_below="@id/spinner2_add_calendar"
+        android:layout_below="@id/music_add_calendar"
         android:background="@drawable/save_button_selector" />
-
 
     <Button
         android:id="@+id/cancle_add_calendar"

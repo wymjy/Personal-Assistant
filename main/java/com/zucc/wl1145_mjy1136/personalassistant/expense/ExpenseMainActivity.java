@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,8 +15,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
+import com.zucc.wl1145_mjy1136.personalassistant.alarm.AlarmManage;
+import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarEditActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.ExpenseDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.MyDatabaseHelper;
@@ -41,6 +46,7 @@ public class ExpenseMainActivity extends AppCompatActivity {
     private Button add;
     private TextView incomecount;
     private TextView outcomecount;
+    private long listNo=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +90,47 @@ public class ExpenseMainActivity extends AppCompatActivity {
                 }
             }
         });
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if(list.get(position).getType()==ExpenseListItem.ITEM) {
+                    listNo = list.get(position).get_date();
+                }
+                return false;
+            }
+        });
+        // 添加长按事件的监听器
+
+        listview.setOnCreateContextMenuListener(new AdapterView.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, android.view.ContextMenu.ContextMenuInfo menuInfo) {
+                menu.setHeaderTitle("管理收支");
+                menu.add(0, 0, 0, "删除");
+            }
+        });
     }
 
     //插入删除数据后返回页面及时更新
     @Override
     protected void onRestart() {
         super.onRestart();
+        updateDate();
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if(item.getItemId() == 0 && listNo>=0) {
+            //执行删除操作
+            expenseDataOperation.deleteByDate(listNo);
+            //更新本界面listview
+            updateDate();
+            //反馈
+            Toast.makeText(ExpenseMainActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    public void updateDate() {
         map.clear();
         list.clear();
         summap=expenseDataOperation.countMount();

@@ -26,6 +26,7 @@ public class CalendarSpecificActivity extends Activity {
     private TextView textDescription;
     private TextView textRepetition;
     private TextView textAdvanceTime;
+    private TextView textMusic;
 
     private String calendarNo;
     private String calendarName;
@@ -35,6 +36,7 @@ public class CalendarSpecificActivity extends Activity {
     private String description;
     private String repetition;
     private String advanceTime;
+    private String music;
 
     private MyCalendar cal;
 
@@ -113,6 +115,7 @@ public class CalendarSpecificActivity extends Activity {
         description = cal.getDescription();
         repetition = cal.getRepetition();
         advanceTime = cal.getAdvanceTime();
+        music = cal.getMusic();
 
         //获得控件对象
         textName = (TextView)findViewById(R.id.textView1_check_calendar);
@@ -122,14 +125,15 @@ public class CalendarSpecificActivity extends Activity {
         textDescription = (TextView)findViewById(R.id.textView5_check_calendar);
         textRepetition = (TextView)findViewById(R.id.textView6_check_calendar);
         textAdvanceTime = (TextView)findViewById(R.id.textView7_check_calendar);
-
+        textMusic = (TextView)findViewById(R.id.textView8_check_calendar);
 
         //向文本域装载数据
-        textName.setText("标题" + calendarName);
+        textName.setText("标题：" + calendarName);
         textDate.setText("时间：" + date);
         textTime.setText("" + time);
         textPlace.setText("地点：" + place);
-        textDescription.setText("描述"+description);
+        textDescription.setText("描述："+description);
+        textMusic.setText("铃声："+music);
         switch (repetition) {
             case "1":
                 textRepetition.setText("仅提醒一次");

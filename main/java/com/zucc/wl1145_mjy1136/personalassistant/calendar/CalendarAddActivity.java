@@ -3,8 +3,9 @@ package com.zucc.wl1145_mjy1136.personalassistant.calendar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,9 +31,13 @@ public class CalendarAddActivity extends Activity {
     private EditText textDescription;
     private Spinner spinnerRepetition;
     private Spinner spinnerAdvanceTime;
-    private Spinner spinnerMusic;
+    private Button buttonMusic;
     private Button save;
     private Button cancle;
+
+    private MediaPlayer alarmMusic;
+    private String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调","爱之梦","光辉岁月","Moonlight Shadow","朋友的酒"};
+    private int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt,R.raw.azm,R.raw.ghsy,R.raw.mls,R.raw.pydj};
 
     private String calendarNo;
     private String calendarName;
@@ -42,6 +47,7 @@ public class CalendarAddActivity extends Activity {
     private String description;
     private String repetition;
     private String advanceTime;
+    private String musicId=String.valueOf(alarmResouces[0]);
 
     private int year;
     private int month;
@@ -66,10 +72,9 @@ public class CalendarAddActivity extends Activity {
         textDescription = (EditText)findViewById(R.id.editText3_add_calendar);
         spinnerRepetition = (Spinner)findViewById(R.id.spinner1_add_calendar);
         spinnerAdvanceTime = (Spinner)findViewById(R.id.spinner2_add_calendar);
+        buttonMusic = (Button)findViewById(R.id.music_add_calendar);
         save = (Button)findViewById(R.id.save_add_calendar);
         cancle =(Button)findViewById(R.id.cancle_add_calendar);
-
-
 
         initSpinnerRepetition();
         initSpinnerPromition();
@@ -77,6 +82,41 @@ public class CalendarAddActivity extends Activity {
         initDate();
         initTime();
 
+        buttonMusic.setText("铃声："+alarmName[0]);
+        buttonMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(CalendarAddActivity.this)
+                        .setTitle("请选择闹铃").setIcon(android.R.drawable.ic_dialog_info)
+                        .setSingleChoiceItems(alarmName, 0,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        if(alarmMusic!=null)
+                                            alarmMusic.stop();
+                                        alarmMusic = MediaPlayer.create(CalendarAddActivity.this, alarmResouces[which]);
+                                        alarmMusic.setLooping(true);
+                                        alarmMusic.start();
+                                        musicId= Integer.toString(alarmResouces[which]);
+                                        buttonMusic.setText("铃声："+alarmName[which]);
+                                    }}
+                        ).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(alarmMusic!=null)
+                                    alarmMusic.stop();
+                            }
+                        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                musicId=String.valueOf(alarmResouces[0]);
+                                buttonMusic.setText("铃声："+alarmName[0]);
+                                if(alarmMusic!=null)
+                                    alarmMusic.stop();
+                            }
+                        }).show();
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -113,8 +153,6 @@ public class CalendarAddActivity extends Activity {
         });
 
     }
-
-
 
     public void initSpinnerRepetition() {
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_repeat,android.R.layout.simple_spinner_item);
@@ -286,8 +324,9 @@ public class CalendarAddActivity extends Activity {
                 "calDescription," +
                 "repetition," +
                 "advanceTime, " +
+                "music_id, " +
                 "valid )" +
-                "values(?,?,?,?,?,?,?,?,?);", new String[]{UserDataOperation.currentUser,calendarName,date,time,place,description,repetition,advanceTime,"1"});
+                "values(?,?,?,?,?,?,?,?,?,?);", new String[]{UserDataOperation.currentUser,calendarName,date,time,place,description,repetition,advanceTime,musicId,"1"});
         //关闭本界面的数据连接
         oper.close();
     }

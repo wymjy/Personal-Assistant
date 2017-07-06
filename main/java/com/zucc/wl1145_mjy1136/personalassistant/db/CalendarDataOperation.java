@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -35,6 +35,7 @@ public class CalendarDataOperation {
     //添加记录
     public  void addAffair(String sql,String[] args) {
         database.execSQL(sql, args);
+
     }
 
     //检索出当前日期的编号、名称和日期
@@ -56,10 +57,11 @@ public class CalendarDataOperation {
             cal.setDescription(cursor.getString(5));
             cal.setRepetition(cursor.getString(6));
             cal.setAdvanceTime(cursor.getString(7));
-            cal.setValid(cursor.getString(8));
+            cal.setMusic(cursor.getString(8));
+            cal.setValid(cursor.getString(9));
             records.add(cal);
+            //Toast.makeText(mContext, cursor.getString(0), Toast.LENGTH_SHORT).show();
         }
-//		Toast.makeText(mContext, cal.getCalendarName(), Toast.LENGTH_SHORT).show();
         return records;
     }
 
@@ -82,13 +84,15 @@ public class CalendarDataOperation {
             cal.setDescription(cursor.getString(5));
             cal.setRepetition(cursor.getString(6));
             cal.setAdvanceTime(cursor.getString(7));
-            cal.setValid(cursor.getString(8));
+            cal.setMusic(cursor.getString(8));
+            cal.setValid(cursor.getString(9));
         }
         return cal;
     }
 
-    public void updateDate(String calendarNo, String calendarName, String date, String time, String place, String description, String repetition, String advanceTime) {
-        database.execSQL("update cal1 set calendarName = ?, calendarDate = ?, calendarTime = ?, place = ?, calDescription = ?, repetition = ?, advanceTime = ? where calendarNo = ?",new String[]{calendarName, date, time, place, description, repetition, advanceTime,calendarNo});
+    public void updateDate(String calendarNo, String calendarName, String date, String time, String place, String description, String repetition, String advanceTime, String musicid) {
+        database.execSQL("update cal1 set calendarName = ?, calendarDate = ?, calendarTime = ?, place = ?, calDescription = ?, repetition = ?, advanceTime = ?, music_id = ? where calendarNo = ?",
+                new String[]{calendarName, date, time, place, description, repetition, advanceTime, musicid,calendarNo});
         close();
     }
 

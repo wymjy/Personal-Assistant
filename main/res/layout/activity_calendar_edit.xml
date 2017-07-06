@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background5"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:background="@drawable/background5">
 
     <TextView
         android:id="@+id/textView1_edit_calendar"
@@ -107,7 +106,14 @@
         android:gravity="center_horizontal"
         android:paddingLeft="80dip" />
 
-
+    <Button
+        android:id="@+id/music_edit_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner2_edit_calendar"
+        android:background="@drawable/datatime_button_selector"
+        android:layout_centerHorizontal="true"
+        android:text="Button" />
 
     <Button
         android:id="@+id/save_edit_calendar"
@@ -117,7 +123,7 @@
         android:layout_marginLeft="10dip"
         android:layout_marginRight="20dip"
         android:layout_marginTop="5dip"
-        android:layout_below="@id/spinner2_edit_calendar"
+        android:layout_below="@id/music_edit_calendar"
         android:background="@drawable/save_button_selector" />
 
 

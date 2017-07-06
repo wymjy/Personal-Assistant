@@ -32,7 +32,7 @@ public class AlarmActivity extends Activity {
         if(calendarName.length() == 0)
             calendarName = "未命名日程";
 
-        alarmMusic = MediaPlayer.create(this, R.raw.xijuzhiwang);
+        alarmMusic = MediaPlayer.create(this, Integer.parseInt(calendar.getMusic()));
         alarmMusic.setLooping(true);
         //播放音乐
         alarmMusic.start();

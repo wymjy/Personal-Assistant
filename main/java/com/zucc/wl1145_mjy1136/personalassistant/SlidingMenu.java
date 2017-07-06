@@ -82,7 +82,7 @@ public class SlidingMenu extends ViewGroup {
                 // 如果在菜单打开时向右滑动及菜单关闭时向左滑动不会触发Scroll事件
                 if ((!isOpen && (downX - moveX) < 0)
                         || (isOpen && (downX - moveX) > 0)) {
-                    scrollBy(deltaX / 4, 0);
+                    scrollBy(deltaX / 2, 0);
                 }
                 mMostRecentX = moveX;
                 break;

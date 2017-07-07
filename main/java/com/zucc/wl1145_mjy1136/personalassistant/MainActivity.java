@@ -1,6 +1,8 @@
 package com.zucc.wl1145_mjy1136.personalassistant;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.preference.TwoStatePreference;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.widget.ImageButton;
@@ -26,6 +29,7 @@ import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView userButton;
     private Uri imageUri;
 
+    ImageView picture;
     private Button addPic;
     private Button openButton;
     private Button closeButton;
@@ -59,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         addPic = (Button)findViewById(R.id.add_main);
         openButton = (Button) findViewById(R.id.button_more_main);
         closeButton = (Button) findViewById(R.id.button_close);
+        picture = (ImageView)findViewById(R.id.picture_main);
         //用户头像
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,8 +172,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         records = oper.getAllRecord();
         schedule=(TextView)findViewById(R.id.textview2_main) ;
         String conclusionText = "";
@@ -176,5 +182,21 @@ public class MainActivity extends AppCompatActivity {
         else
             conclusionText += "目前您共有" + records.size() + "项日程";
         schedule.setText(conclusionText);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode){
+            case CROP_PHOTO:
+                if(resultCode == RESULT_OK){
+                    try{
+                        Bitmap bitmap= BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                        picture.setImageBitmap(bitmap);
+                    }catch(FileNotFoundException e){
+                        e.printStackTrace();
+                    }
+                }break;
+            default: break;
+        }
     }
 }

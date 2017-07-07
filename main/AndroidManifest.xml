@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zucc.wl1145_mjy1136.personalassistant">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -31,32 +32,34 @@
         <activity android:name=".calendar.CalendarTodayActivity" />
         <activity android:name=".calendar.CalendarEditActivity" />
         <activity android:name=".calendar.CalendarSpecificActivity" />
-        <activity android:name=".alarm.AlarmActivity" >
-            <!--<intent-filter>
+        <activity android:name=".alarm.AlarmActivity">
+
+            <!--
+        <intent-filter>
             <action android:name="package com.zucc.wl1145_mjy1136.personalassistant.alarm.ACTION"/>
             <category android:name="android.intent.category.DEFAULT"></category>
-        </intent-filter>-->
+        </intent-filter>
+            -->
         </activity>
+        <activity android:name=".InformationActivity" />
+        <activity android:name=".expense.ExpenseMainActivity" />
+        <activity android:name=".expense.ExpenseAddActivity" />
+        <activity android:name=".expense.ExpenseCheckActivity" />
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".user.UserMainActivity" />
 
-        <activity android:name=".InformationActivity"></activity>
-        <activity android:name=".expense.ExpenseMainActivity"/>
-        <activity android:name=".expense.ExpenseAddActivity"/>
-        <activity android:name=".expense.ExpenseCheckActivity"/>
-        <activity android:name=".user.LoginActivity"/>
-        <activity android:name=".user.RegisterActivity"/>
-        <activity android:name=".user.UserMainActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="595c9e5e677baa0fff000565">
-        </meta-data>
+            android:value="595c9e5e677baa0fff000565"></meta-data>
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="088b7f251945ba6fd465b19341a0f1bc">
-        </meta-data>
+            android:value="088b7f251945ba6fd465b19341a0f1bc"></meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Channel ID" >
-        </meta-data>
+            android:value="Channel ID"></meta-data>
+
+        <activity android:name=".calendar.CalendarSearchActivity"></activity>
     </application>
 
 </manifest>

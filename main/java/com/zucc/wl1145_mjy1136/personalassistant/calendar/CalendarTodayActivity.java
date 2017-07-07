@@ -28,6 +28,7 @@ import java.util.Map;
 public class CalendarTodayActivity extends Activity {
     private List<MyCalendar> records;
     private Button addButton;
+    private Button searchButton;
     private String calendarNo;
     private CalendarDataOperation oper;
     private TextView textView;
@@ -55,6 +56,15 @@ public class CalendarTodayActivity extends Activity {
 //				oper.close1();
                 Intent intent = new Intent();
                 intent.setClass(CalendarTodayActivity.this, CalendarAddActivity.class);
+                startActivity(intent);
+            }
+        });
+        searchButton = (Button)findViewById(R.id.search_check_today_calendar);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(CalendarTodayActivity.this, CalendarSearchActivity.class);
                 startActivity(intent);
             }
         });

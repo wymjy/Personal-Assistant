@@ -31,8 +31,8 @@ public class CalendarEditActivity extends Activity {
     private CalendarDataOperation oper;
 
     private MediaPlayer alarmMusic;
-    private String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调"};
-    private int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt};
+    private String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调","爱之梦","光辉岁月","Moonlight Shadow","朋友的酒"};
+    private int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt,R.raw.azm,R.raw.ghsy,R.raw.mls,R.raw.pydj};
     private String musicId;
 
     private EditText textName;
@@ -86,6 +86,7 @@ public class CalendarEditActivity extends Activity {
         description = cal.getDescription();
         repetition = cal.getRepetition();
         advanceTime = cal.getAdvanceTime();
+        musicId = cal.getMusic();
 
         //获得控件对象
         textName = (EditText)findViewById(R.id.editText1_edit_calendar);
@@ -124,17 +125,29 @@ public class CalendarEditActivity extends Activity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //dialog.dismiss();
-                                        alarmMusic.stop();
+                                        if(alarmMusic!=null)
+                                            alarmMusic.stop();
                                         alarmMusic = MediaPlayer.create(CalendarEditActivity.this, alarmResouces[which]);
                                         alarmMusic.setLooping(true);
                                         alarmMusic.start();
+                                        musicId= Integer.toString(alarmResouces[which]);
+                                        buttonMusic.setText("铃声："+alarmName[which]);
                                     }}
                         ).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        musicId= String.valueOf(alarmResouces[which]);
+                        if(alarmMusic!=null)
+                            alarmMusic.stop();
                     }
-                }).setNegativeButton("取消", null).show();
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        musicId=String.valueOf(alarmResouces[0]);
+                        buttonMusic.setText("铃声："+alarmName[0]);
+                        if(alarmMusic!=null)
+                            alarmMusic.stop();
+                    }
+                }).show();
             }
         });
         //为“保存”按钮绑定监听器

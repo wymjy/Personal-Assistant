@@ -1,7 +1,10 @@
 package com.zucc.wl1145_mjy1136.personalassistant;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.preference.TwoStatePreference;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,17 +25,24 @@ import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int TAKE_PHOTO=1;
+    public static final int CROP_PHOTO=2;
+
     private CalendarDataOperation oper;
     private List<MyCalendar> records;
 
     private CircleImageView userButton;
+    private Uri imageUri;
 
+    private Button addPic;
     private Button openButton;
     private Button closeButton;
     private SlidingMenu mSlidingMenu;
@@ -46,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 .from(this).inflate(R.layout.left_fragment, null));
         setContentView(mSlidingMenu);//注意setContentView需要换为我们的SlidingMenu
         userButton = (CircleImageView) findViewById(R.id.head);
+        addPic = (Button)findViewById(R.id.add_main);
         openButton = (Button) findViewById(R.id.button_more_main);
         closeButton = (Button) findViewById(R.id.button_close);
         //用户头像
@@ -63,6 +74,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        addPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File outputImage = new File(Environment.
+                        getExternalStorageDirectory(),"out_image.jpg");
+                try{
+                    if(outputImage.exists()){
+                        outputImage.delete();
+                    }
+                    outputImage.createNewFile();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+                imageUri = Uri.fromFile(outputImage);
+                Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                intent.setType("image/*");
+                intent.putExtra("crop",true);
+                intent.putExtra("scale",true);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CROP_PHOTO);
+            }
+        });
         openButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

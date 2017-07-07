@@ -35,7 +35,6 @@ public class CalendarDataOperation {
     //添加记录
     public  void addAffair(String sql,String[] args) {
         database.execSQL(sql, args);
-
     }
 
     //检索出当前日期的编号、名称和日期
@@ -65,8 +64,40 @@ public class CalendarDataOperation {
         return records;
     }
 
-    //检索出当前日期的编号、名称和日期
+    public List<MyCalendar> getRecordByDate(String date) {
+        cursor = database.rawQuery("select * from cal1 where user_id = ? and calendarDate = ? order by calendarDate desc;",
+                new String[]{UserDataOperation.currentUser, date});
+        MyCalendar cal = new MyCalendar();
+        List<MyCalendar> records = new ArrayList<MyCalendar>();
+        while (cursor.moveToNext()) {
+            cal = new MyCalendar();
+            cal.setCalendarNo(cursor.getString(0));//获取第一列的值,第一列的索引从0开始
+            cal.setCalendarName(cursor.getString(1));//获取第二列的值
+            cal.setDate(cursor.getString(2));//获取第三列的值
+            cal.setTime(cursor.getString(3));
+            cal.setPlace(cursor.getString(4));
+            cal.setDescription(cursor.getString(5));
+            cal.setRepetition(cursor.getString(6));
+            cal.setAdvanceTime(cursor.getString(7));
+            cal.setMusic(cursor.getString(8));
+            cal.setValid(cursor.getString(9));
+            records.add(cal);
+            //Toast.makeText(mContext, cursor.getString(0), Toast.LENGTH_SHORT).show();
+        }
+        return records;
+    }
 
+    //检索出最近添加的日程
+    public int getLastRecord(){
+        int result=-1;
+        SQLiteDatabase db = helper.getReadableDatabase();	// 取得SQLiteDatabase
+        String sql = "select max(calendarNo) from cal1";
+        Cursor cursor = db.rawQuery(sql, null) ;
+        if(cursor.moveToFirst()){
+            result=cursor.getInt(0);
+        }
+        return result;
+    }
 
     public void delete(String calendarNo) {
         database.execSQL("delete from cal1 where calendarNo = ?",new String[]{calendarNo});

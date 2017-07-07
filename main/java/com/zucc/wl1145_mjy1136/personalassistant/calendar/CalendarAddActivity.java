@@ -135,7 +135,7 @@ public class CalendarAddActivity extends Activity {
                 //通过日期、时间值来设置闹钟
 //				Toast.makeText(CalendarAddActivity.this, "已添加了编号为" + CalendarDataOperation.recordCount + "的闹钟", Toast.LENGTH_SHORT).show();
                 AlarmManage manager = new AlarmManage(CalendarAddActivity.this);
-                manager.setAlarm(CalendarDataOperation.recordCount ++, repetition, advanceTime, year, month, day, hour, minute);
+                manager.setAlarm(oper.getLastRecord(), repetition, advanceTime, year, month, day, hour, minute);
 				/*Intent intent = new Intent();
 			    intent.setClass(CalendarAddActivity.this, CalendarTodayActivity.class);
 				startActivity(intent);*/

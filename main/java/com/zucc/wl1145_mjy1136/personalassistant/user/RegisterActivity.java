@@ -1,6 +1,7 @@
 package com.zucc.wl1145_mjy1136.personalassistant.user;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,9 @@ import android.widget.Toast;
 
 import com.zucc.wl1145_mjy1136.personalassistant.R;
 import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by wanglei on 2017/7/4.
@@ -43,8 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String info = userDataOperation.insertRegi(username.getText().toString(),
                         password.getText().toString(),password2.getText().toString());
                 Toast.makeText(RegisterActivity.this, info, Toast.LENGTH_LONG).show();
-                if(info.equals("注册成功！"))
+                if(info.equals("注册成功！")) {
                     finish();
+                }
             }
         });
     }

@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int TAKE_PHOTO=1;
     public static final int CROP_PHOTO=2;
+    private File dirFirstFolder;
+    private File outputImage;
 
     private CalendarDataOperation oper;
     private List<MyCalendar> records;
@@ -66,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
         closeButton = (Button) findViewById(R.id.button_close);
         picture = (ImageView)findViewById(R.id.picture_main);
         //用户头像
+        dirFirstFolder = new File(Environment.
+                getExternalStorageDirectory()+"/PA_UserHead");
+        if(!dirFirstFolder.exists()) { //如果该文件夹不存在，则进行创建
+            dirFirstFolder.mkdirs();//创建文件夹
+        }
+        outputImage = new File(dirFirstFolder,"_"+UserDataOperation.currentUser+".jpg");
+        if(outputImage.exists())
+            try{
+                imageUri = Uri.fromFile(outputImage);
+                Bitmap bitmap= BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                userButton.setImageBitmap(bitmap);
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            }
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,28 +96,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                File outputImage = new File(Environment.
-                        getExternalStorageDirectory(),"out_image.jpg");
-                try{
-                    if(outputImage.exists()){
-                        outputImage.delete();
-                    }
-                    outputImage.createNewFile();
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
-                imageUri = Uri.fromFile(outputImage);
-                Intent intent = new Intent("android.intent.action.GET_CONTENT");
-                intent.setType("image/*");
-                intent.putExtra("crop",true);
-                intent.putExtra("scale",true);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(intent, CROP_PHOTO);
-            }
-        });
+//        addPic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                File outputImage = new File(Environment.
+//                        getExternalStorageDirectory(),"out_image.jpg");
+//                try{
+//                    if(outputImage.exists()){
+//                        outputImage.delete();
+//                    }
+//                    outputImage.createNewFile();
+//                }catch(IOException e){
+//                    e.printStackTrace();
+//                }
+//                imageUri = Uri.fromFile(outputImage);
+//                Intent intent = new Intent("android.intent.action.GET_CONTENT");
+//                intent.setType("image/*");
+//                intent.putExtra("crop",true);
+//                intent.putExtra("scale",true);
+//                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                startActivityForResult(intent, CROP_PHOTO);
+//            }
+//        });
         openButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -173,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         records = oper.getAllRecord();
         schedule=(TextView)findViewById(R.id.textview2_main) ;
         String conclusionText = "";
@@ -182,6 +197,17 @@ public class MainActivity extends AppCompatActivity {
         else
             conclusionText += "目前您共有" + records.size() + "项日程";
         schedule.setText(conclusionText);
+        try{
+            //Toast.makeText(MainActivity.this, UserDataOperation.currentUser, Toast.LENGTH_SHORT).show();
+            outputImage = new File(dirFirstFolder,"_"+UserDataOperation.currentUser+".jpg");
+            imageUri = Uri.fromFile(outputImage);
+            Bitmap bitmap= BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+            userButton.setImageBitmap(bitmap);
+        }catch(FileNotFoundException e) {
+            userButton.setImageResource(R.drawable.touxiang);
+            e.printStackTrace();
+        }
+        super.onResume();
     }
 
     @Override

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background5"
+    tools:context="com.zucc.wl1145_mjy1136.personalassistant.ShareActivity">
+
+    <TextView
+        android:id="@+id/share_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/title_background"
+        android:text="分享"
+        android:textColor="@android:color/white"
+        android:textSize="18dip" />
+    <EditText
+        android:id="@+id/share_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/share_textview"
+        android:background="@drawable/input"
+        android:gravity="center"
+        android:layout_marginTop="5dip"
+        android:hint="请输入你想要分享的话语"
+         />
+    <Button
+        android:id="@+id/share_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share_edt"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/datatime_button_selector"
+        android:text="返回" />
+    <Button
+        android:id="@+id/share_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share_edt"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/datatime_button_selector"
+        android:text="分享" />
+
+
+
+</RelativeLayout>

@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleImageView userButton;
     private Uri imageUri;
-
     ImageView picture;
     private Button addPic;
     private Button openButton;
@@ -124,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
          //侧栏id
         Button buttonCalendar = (Button)findViewById(R.id.item3_ce);
         Button buttonExpense = (Button)findViewById(R.id.item4_ce);
+        Button buttonQRcode =(Button)findViewById(R.id.item5_ce);
         Button buttonQuit = (Button)findViewById(R.id.item6_ce);
+        Button buttonShare = (Button)findViewById(R.id.item8_ce);
+
 
         //退出程序
         buttonQuit.setOnClickListener(new View.OnClickListener() {
@@ -148,12 +150,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //扫一扫
+        buttonQRcode.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, WeChatCaptureActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
         //收支管理
         buttonExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, ExpenseMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //分享
+        buttonShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, ShareActivity.class);
                 startActivity(intent);
             }
         });

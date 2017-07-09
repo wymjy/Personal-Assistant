@@ -1,5 +1,7 @@
 package com.zucc.wl1145_mjy1136.personalassistant;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,10 +22,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
+import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarAddActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.calendar.CalendarTodayActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.ExpenseDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.MyCalendar;
+import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseAddActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private Uri imageUri;
     ImageView picture;
     private Button addPic;
+    private Button add_main;
     private Button openButton;
     private Button closeButton;
     private SlidingMenu mSlidingMenu;
@@ -101,6 +106,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //添加按钮
+        add_main=(Button)findViewById(R.id.add_main);
+        add_main.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("添加")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setSingleChoiceItems(new String[] {"日程管理","个人收支管理"}, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent();
+                                        switch (which) {
+
+                                            case 0:
+                                                intent.setClass(MainActivity.this, CalendarAddActivity.class);
+                                                startActivity(intent);
+                                                break;
+                                            case 1:
+                                                intent.setClass(MainActivity.this,ExpenseAddActivity.class);
+                                                startActivity(intent);
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        dialog.dismiss();
+                                    }
+                                }
+                        )
+                        .setNegativeButton("取消", null)
+                        .show();
+            }
+        });
+        
         openButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

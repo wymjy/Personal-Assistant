@@ -26,6 +26,7 @@ public class CalendarSearchActivity extends AppCompatActivity {
 
     private EditText dateInput;
     private Button search;
+    private Button search_btn;
     private ListView listView;
 
     @Override
@@ -34,6 +35,16 @@ public class CalendarSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar_search);
         dateInput = (EditText)findViewById(R.id.search_edittext);
         search = (Button)findViewById(R.id.search_btn);
+        search_btn=(Button)findViewById(R.id.search_back_btn);
+
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 CalendarSearchActivity.this.finish();
+            }
+        });
+
+
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override

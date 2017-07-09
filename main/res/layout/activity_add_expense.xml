@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/textView1_add_expense"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:background="@drawable/title_background"

@@ -80,8 +80,31 @@ public class CalendarDataOperation {
     public List<MyCalendar> getRecordByDate(String date) {
         cursor = database.rawQuery("select * from cal1 where user_id = ? and calendarDate = ? order by calendarDate desc;",
                 new String[]{UserDataOperation.currentUser, date});
-        MyCalendar cal = new MyCalendar();
-        List<MyCalendar> records = new ArrayList<MyCalendar>();
+        MyCalendar cal;
+        List<MyCalendar> records = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            cal = new MyCalendar();
+            cal.setCalendarNo(cursor.getString(0));//获取第一列的值,第一列的索引从0开始
+            cal.setCalendarName(cursor.getString(1));//获取第二列的值
+            cal.setDate(cursor.getString(2));//获取第三列的值
+            cal.setTime(cursor.getString(3));
+            cal.setPlace(cursor.getString(4));
+            cal.setDescription(cursor.getString(5));
+            cal.setRepetition(cursor.getString(6));
+            cal.setAdvanceTime(cursor.getString(7));
+            cal.setMusic(cursor.getString(8));
+            cal.setValid(cursor.getString(9));
+            records.add(cal);
+            //Toast.makeText(mContext, cursor.getString(0), Toast.LENGTH_SHORT).show();
+        }
+        return records;
+    }
+
+    public List<MyCalendar> getRecordByDateDim(String date) {
+        cursor = database.rawQuery("select * from cal1 where user_id = ? and calendarDate like ? order by calendarDate desc;",
+                new String[]{UserDataOperation.currentUser, "%"+date+"%"});
+        MyCalendar cal;
+        List<MyCalendar> records = new ArrayList<>();
         while (cursor.moveToNext()) {
             cal = new MyCalendar();
             cal.setCalendarNo(cursor.getString(0));//获取第一列的值,第一列的索引从0开始

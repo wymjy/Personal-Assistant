@@ -8,14 +8,14 @@
         android:id="@+id/linearlayout1"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@drawable/background_top_main">
 
         <Button
             android:id="@+id/button_more_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/button_more"/>
         <TextView
@@ -60,7 +60,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dip"
             android:gravity="center"
-            android:text="\ttext"
+            android:text="text"
             android:textSize="14dp"/>
 
         <ImageView
@@ -75,7 +75,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dip"
             android:gravity="center"
-            android:text="\ttext"
+            android:text="text"
             android:textSize="14dp"/>
 
     </LinearLayout>

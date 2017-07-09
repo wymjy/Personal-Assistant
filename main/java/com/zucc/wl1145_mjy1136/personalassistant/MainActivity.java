@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         openButton = (Button) findViewById(R.id.button_more_main);
         closeButton = (Button) findViewById(R.id.button_close);
         picture = (ImageView)findViewById(R.id.picture_main);
+        schedule=(TextView)findViewById(R.id.textview2_main) ;
+        expense1=(TextView)findViewById(R.id.textview3_main);
+        expense2=(TextView)findViewById(R.id.textview4_main);
         //用户头像
         dirFirstFolder = new File(Environment.
                 getExternalStorageDirectory()+"/PA_UserHead");
@@ -106,10 +109,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, CalendarTodayActivity.class);
+                startActivity(intent);
+            }
+        });
+        expense1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, ExpenseMainActivity.class);
+                startActivity(intent);
+            }
+        });
+        expense2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, ExpenseMainActivity.class);
+                startActivity(intent);
+            }
+        });
         //添加按钮
         add_main=(Button)findViewById(R.id.add_main);
         add_main.setOnClickListener(new Button.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -118,11 +141,9 @@ public class MainActivity extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_info)
                         .setSingleChoiceItems(new String[] {"日程管理","个人收支管理"}, 0,
                                 new DialogInterface.OnClickListener() {
-
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent();
                                         switch (which) {
-
                                             case 0:
                                                 intent.setClass(MainActivity.this, CalendarAddActivity.class);
                                                 startActivity(intent);
@@ -142,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
-        
+
         openButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -231,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         records = oper.getAllRecord();
-        schedule=(TextView)findViewById(R.id.textview2_main) ;
         String conclusionText = "";
         if(records.size() == 0)
             conclusionText += "目前您还没有添加任何日程哦，赶快添加吧！";
@@ -239,14 +259,12 @@ public class MainActivity extends AppCompatActivity {
             conclusionText += "目前您共有" + records.size() + "项日程";
         schedule.setText(conclusionText);
         summap=ex.countMount();
-        expense1=(TextView)findViewById(R.id.textview3_main);
         conclusionText = "";
         if(summap.get("in")==null)
             conclusionText += "您还没有买过任何东西哦";
         else
             conclusionText += "共收入："+ summap.get("in");
         expense1.setText(conclusionText);
-        expense2=(TextView)findViewById(R.id.textview4_main);
         conclusionText = "";
         if(summap.get("out")==null)
             conclusionText += "您还没有任何收入哦";

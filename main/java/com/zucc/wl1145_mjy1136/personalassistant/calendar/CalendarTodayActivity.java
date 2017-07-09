@@ -128,12 +128,6 @@ public class CalendarTodayActivity extends Activity {
         super.onResume();
     }
 
-    @Override
-    protected void onStop() {
-        // TODO Auto-generated method stub
-//		oper.close();
-        super.onPause();
-    }
 
     /**
      * 长按菜单响应函数
@@ -180,9 +174,9 @@ public class CalendarTodayActivity extends Activity {
         //检索出所有的日程项的名称和日期，逐条显示在列表项中
 
         //创建一个List集合，List集合的元素是Map
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> listItems = new ArrayList<>();
         for(int i = 0; i < records.size(); i ++) {
-            Map<String, Object> listItem = new HashMap<String, Object>();
+            Map<String, Object> listItem = new HashMap<>();
             if(records.get(i).getCalendarName().length() == 0)
                 listItem.put("name", "未命名日程");
             else

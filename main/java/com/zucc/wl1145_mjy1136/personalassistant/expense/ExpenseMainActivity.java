@@ -58,8 +58,18 @@ public class ExpenseMainActivity extends AppCompatActivity {
         add=(Button)findViewById(R.id.add_expense_main);
         expenseDataOperation=new ExpenseDataOperation(this);
         summap=expenseDataOperation.countMount();
-        incomecount.setText("\t共计收入："+ summap.get("in"));
-        outcomecount.setText("\t共计支出："+summap.get("out"));
+        String s="\t共计收入：";
+        if(summap.get("in")==null)
+            s+="0";
+        else
+            s+=summap.get("in");
+        incomecount.setText(s);
+        s="\t共计支出：";
+        if(summap.get("out")==null)
+            s+="0";
+        else
+            s+=summap.get("out");
+        outcomecount.setText(s);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

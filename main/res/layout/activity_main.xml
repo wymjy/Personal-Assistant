@@ -60,7 +60,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dip"
             android:gravity="center"
-            android:text="\t\t近期计划：2   近期独立任务：2"
+            android:text="\ttext"
             android:textSize="14dp"/>
 
         <ImageView
@@ -75,7 +75,7 @@
             android:layout_width="fill_parent"
             android:layout_height="38dip"
             android:gravity="center"
-            android:text="\t已评估计划：2   已评估独立任务：2"
+            android:text="\ttext"
             android:textSize="14dp"/>
 
     </LinearLayout>

@@ -7,8 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 
+import com.zucc.wl1145_mjy1136.personalassistant.R;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by mjy on 2017/7/2.
@@ -19,7 +24,8 @@ public class CalendarDataOperation {
     private SQLiteDatabase database;
     private Context mContext;
     private Cursor cursor;
-    public static int recordCount = 1;
+    public static String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调","爱之梦","光辉岁月","Moonlight Shadow","朋友的酒"};
+    public static int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt,R.raw.azm,R.raw.ghsy,R.raw.mls,R.raw.pydj};
 
     public SQLiteDatabase getDatabase() {
         return database;
@@ -32,6 +38,13 @@ public class CalendarDataOperation {
 //		Toast.makeText(context, "Create succeeded", Toast.LENGTH_SHORT).show();
     }
 
+    public String findMusicName(int id){
+        for(int i=0; i<alarmResouces.length; i++){
+            if(alarmResouces[i]==id)
+                return alarmName[i];
+        }
+        return "无音乐";
+    }
     //添加记录
     public  void addAffair(String sql,String[] args) {
         database.execSQL(sql, args);

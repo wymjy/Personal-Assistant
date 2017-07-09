@@ -36,8 +36,6 @@ public class CalendarAddActivity extends Activity {
     private Button cancle;
 
     private MediaPlayer alarmMusic;
-    private String[] alarmName={"喜剧之王","巴赫：G弦上的咏叹调","爱之梦","光辉岁月","Moonlight Shadow","朋友的酒"};
-    private int[] alarmResouces={R.raw.xijuzhiwang,R.raw.gyt,R.raw.azm,R.raw.ghsy,R.raw.mls,R.raw.pydj};
 
     private String calendarNo;
     private String calendarName;
@@ -47,7 +45,7 @@ public class CalendarAddActivity extends Activity {
     private String description;
     private String repetition;
     private String advanceTime;
-    private String musicId=String.valueOf(alarmResouces[0]);
+    private String musicId=String.valueOf(CalendarDataOperation.alarmResouces[0]);
 
     private int year;
     private int month;
@@ -82,23 +80,23 @@ public class CalendarAddActivity extends Activity {
         initDate();
         initTime();
 
-        buttonMusic.setText("铃声："+alarmName[0]);
+        buttonMusic.setText("铃声："+CalendarDataOperation.alarmName[0]);
         buttonMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(CalendarAddActivity.this)
                         .setTitle("请选择闹铃").setIcon(android.R.drawable.ic_dialog_info)
-                        .setSingleChoiceItems(alarmName, 0,
+                        .setSingleChoiceItems(CalendarDataOperation.alarmName, 0,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //dialog.dismiss();
                                         if(alarmMusic!=null)
                                             alarmMusic.stop();
-                                        alarmMusic = MediaPlayer.create(CalendarAddActivity.this, alarmResouces[which]);
+                                        alarmMusic = MediaPlayer.create(CalendarAddActivity.this, CalendarDataOperation.alarmResouces[which]);
                                         alarmMusic.setLooping(true);
                                         alarmMusic.start();
-                                        musicId= Integer.toString(alarmResouces[which]);
-                                        buttonMusic.setText("铃声："+alarmName[which]);
+                                        musicId= Integer.toString(CalendarDataOperation.alarmResouces[which]);
+                                        buttonMusic.setText("铃声："+CalendarDataOperation.alarmName[which]);
                                     }}
                         ).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
@@ -109,8 +107,8 @@ public class CalendarAddActivity extends Activity {
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                musicId=String.valueOf(alarmResouces[0]);
-                                buttonMusic.setText("铃声："+alarmName[0]);
+                                musicId=String.valueOf(CalendarDataOperation.alarmResouces[0]);
+                                buttonMusic.setText("铃声："+CalendarDataOperation.alarmName[0]);
                                 if(alarmMusic!=null)
                                     alarmMusic.stop();
                             }

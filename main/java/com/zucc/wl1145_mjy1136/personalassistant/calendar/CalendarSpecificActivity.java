@@ -133,7 +133,7 @@ public class CalendarSpecificActivity extends Activity {
         textTime.setText("" + time);
         textPlace.setText("地点：" + place);
         textDescription.setText("描述："+description);
-        textMusic.setText("铃声："+music);
+        textMusic.setText("铃声："+oper.findMusicName(Integer.parseInt(music)));
         switch (repetition) {
             case "1":
                 textRepetition.setText("仅提醒一次");

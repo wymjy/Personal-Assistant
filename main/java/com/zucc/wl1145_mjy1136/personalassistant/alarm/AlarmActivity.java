@@ -57,40 +57,9 @@ public class AlarmActivity extends Activity {
 //		this.finish();
 
 
-//		// TODO Auto-generated method stub
-//		myNotiManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//		setNotiType(R.drawable.ic_launcher, "sdf");
-//		this.finish();
 
     }
 
-//	/* 发出Notification的method */
-//	  private void setNotiType(int iconId, String text)
-//	  {
-//	    /* 建立新的Intent，作为点选Notification留言条时，
-//	     * 会执行的Activity */
-//	    Intent notifyIntent=new Intent(this,TaskEvaluateActivity.class);
-//	    notifyIntent.putExtra("taskNo", 1);
-//	    notifyIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-//	    /* 建立PendingIntent作为设定递延执行的Activity */
-//	    PendingIntent appIntent=PendingIntent.getActivity(this,0,
-//	                                                      notifyIntent,0);
-//
-//	    /* 建立Notication，并设定相关参数 */
-//	    Notification myNoti=new Notification();
-////	    Notification myNoti = new Notification(
-////				R.drawable.ic_launcher, "This is ticker text",
-////				System.currentTimeMillis());
-//	    /* 设定statusbar显示的icon */
-//	    myNoti.icon=iconId;
-//	    /* 设定statusbar显示的文字讯息 */
-//	    myNoti.tickerText=text;
-//	    /* 设定notification发生时同时发出预设声音 */
-//	    myNoti.defaults=Notification.DEFAULT_SOUND;
-//	    /* 设定Notification留言条的参数 */
-//	    myNoti.setLatestEventInfo(this,"MSN登入状态",text,appIntent);
-//	    /* 送出Notification */
-//	    myNotiManager.notify(1,myNoti);
-//	  }
+
 }
 

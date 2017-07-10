@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main1" >
+    xmlns:attr="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_main1">
 
     <LinearLayout
         android:id="@+id/linearlayout1"
@@ -102,18 +103,19 @@
         android:text="欢迎来到个人助理"
         />
 
+    <com.zucc.wl1145_mjy1136.personalassistant.PowerImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView5_main"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/clock"
+        attr:auto_play="true"/>
+
     <ImageView
         android:id="@+id/picture_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ListView
-        android:id="@+id/listview_main"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5_main"
-        android:layout_marginTop="10dip"
-        android:divider="@drawable/jiangetiao_list" >
 
-    </ListView>
 
 </RelativeLayout>

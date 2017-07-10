@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:attr="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/background5"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:background ="@drawable/title_background1"
         android:layout_alignParentTop="true"
         android:layout_width="fill_parent"
+        android:background="@drawable/title_background"
         android:layout_height="?attr/actionBarSize">
         <Button
             android:id="@+id/back_regi"
@@ -72,5 +75,9 @@
         android:id="@+id/regi_register"
         android:layout_width="200dp" android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"
+        android:background="@drawable/datatime_button_selector"
         android:text="注册"/>
+
+
+
 </LinearLayout>

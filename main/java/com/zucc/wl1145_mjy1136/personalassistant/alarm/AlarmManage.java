@@ -25,16 +25,16 @@ public class AlarmManage {
     }
 
     /**
-     * @author lazy song
-     * @category 此函数用于设置一个闹钟，通常在对日程表进行增加和修改的时候被调用
-     * @param alarmId 给定的编号用于区分不同的闹钟，和日程表中的calendarNo字段相关
-     * @param repetition 闹钟的重复方式，和日程表中的repetition字段相关
-     * @param advanceTime 闹钟的提前时间，和日程表中的advanceTime字段相关
-     * @param year 闹钟的年份
-     * @param month 闹钟的月份
-     * @param day 闹钟的天数
-     * @param hour 闹钟的时
-     * @param minute 闹钟的分
+     *  lazy song
+     *  此函数用于设置一个闹钟，通常在对日程表进行增加和修改的时候被调用
+     *  alarmId 给定的编号用于区分不同的闹钟，和日程表中的calendarNo字段相关
+     *  repetition 闹钟的重复方式，和日程表中的repetition字段相关
+     *  advanceTime 闹钟的提前时间，和日程表中的advanceTime字段相关
+     *  year 闹钟的年份
+     *  month 闹钟的月份
+     *  day 闹钟的天数
+     *  hour 闹钟的时
+     *  minute 闹钟的分
      */
     public void setAlarm(int alarmId,
                          String repetition,

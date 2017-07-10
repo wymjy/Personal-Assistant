@@ -43,7 +43,6 @@
         </intent-filter>
             -->
         </activity>
-        <activity android:name=".InformationActivity" />
         <activity android:name=".expense.ExpenseMainActivity" />
         <activity android:name=".expense.ExpenseAddActivity" />
         <activity android:name=".expense.ExpenseCheckActivity" />
@@ -63,7 +62,6 @@
 
         <activity android:name=".calendar.CalendarSearchActivity" />
         <activity android:name=".WeChatCaptureActivity" />
-        <activity android:name=".ShareActivity"></activity>
     </application>
 
 </manifest>

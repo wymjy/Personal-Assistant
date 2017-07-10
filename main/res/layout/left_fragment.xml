@@ -9,14 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
-        <!--  <ImageButton
-            android:id="@+id/image1_ce"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/background_ce"/> -->
 
         <RelativeLayout
             android:id="@+id/relative1_ce"
@@ -50,8 +42,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/jiangetiao_ce"
             android:layout_marginTop="20dip"
-            android:layout_marginLeft="7dip"
-            android:layout_marginRight="7dip"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/relative1_ce"/>
 
@@ -59,12 +49,12 @@
             android:id="@+id/relative4_ce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/image0_ce"
             android:layout_below="@id/image0_ce">
 
             <Button
                 android:id="@+id/item3_ce"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/item_selector"/>
@@ -101,12 +91,12 @@
             android:id="@+id/relative5_ce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/image7_ce"
             android:layout_below="@id/image7_ce">
 
             <Button
                 android:id="@+id/item4_ce"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/item_selector"/>
@@ -116,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ability"/>
+                android:background="@drawable/expense"/>
 
             <TextView
                 android:id="@+id/jiange4_ce"
@@ -143,12 +133,12 @@
             android:id="@+id/relative6_ce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/image9_ce"
             android:layout_below="@id/image9_ce">
 
             <Button
                 android:id="@+id/item5_ce"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/item_selector"/>
@@ -181,32 +171,16 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/relative6_ce"/>
 
-
-
-
-
-
-        <ImageView
-            android:id="@+id/image13_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@drawable/jiangetiao_ce"
-            android:layout_marginLeft="7dip"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/image11_ce"/>
-
-
         <RelativeLayout
             android:id="@+id/relative7_ce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/image13_ce">
+            android:layout_alignLeft="@id/image11_ce"
+            android:layout_below="@id/image11_ce">
 
             <Button
                 android:id="@+id/item6_ce"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/item_selector"/>

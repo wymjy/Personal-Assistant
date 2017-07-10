@@ -1,5 +1,6 @@
 package com.zucc.wl1145_mjy1136.personalassistant.expense;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,7 @@ import java.util.Date;
 public class ExpenseCheckActivity extends AppCompatActivity{
     private ExpenseDataOperation expenseDataOperation;
     private ExpenseListItem expenseListItem;
+    private Button share_expense_btn;
     private Button back;
     private Button delete;
     private TextView type;
@@ -37,9 +39,22 @@ public class ExpenseCheckActivity extends AppCompatActivity{
         final long itemdate = getIntent().getExtras().getLong("itemdate");
         expenseDataOperation = new ExpenseDataOperation(ExpenseCheckActivity.this);
         expenseListItem = expenseDataOperation.queryByDate(itemdate);
-
+        share_expense_btn=(Button)findViewById(R.id.share_check_calendar);
         back = (Button)findViewById(R.id.back_check_expense);
         delete = (Button)findViewById(R.id.delete_check_expense);
+
+
+        share_expense_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1=new Intent(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_TEXT, name.getText().toString()+type.getText().toString()+mount.getText().toString()+description.getText().toString());
+                intent1.setType("text/plain");
+                startActivity(Intent.createChooser(intent1,"share"));
+            }
+        });
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

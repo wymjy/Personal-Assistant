@@ -32,6 +32,16 @@
             android:text="查看收支" android:textSize="18sp" />
 
         <Button
+            android:id="@+id/share_check_calendar"
+            android:background="@drawable/share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/edit_check_expense"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp" />
+
+        <Button
             android:id="@+id/delete_check_expense"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="38dp"

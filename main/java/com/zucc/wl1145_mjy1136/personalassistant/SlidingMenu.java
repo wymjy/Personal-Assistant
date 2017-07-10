@@ -42,6 +42,8 @@ public class SlidingMenu extends ViewGroup {
         mScroller = new Scroller(context);
     }
 
+
+    //ViewGroup中子View的布局方法，用于放置子View的位置
     @Override
     protected void onLayout(boolean arg0, int l, int t, int r, int b) {
         // TODO Auto-generated method stub

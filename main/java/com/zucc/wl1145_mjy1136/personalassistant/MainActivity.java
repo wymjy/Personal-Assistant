@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonExpense = (Button)findViewById(R.id.item4_ce);
         Button buttonQRcode =(Button)findViewById(R.id.item5_ce);
         Button buttonQuit = (Button)findViewById(R.id.item6_ce);
-        Button buttonShare = (Button)findViewById(R.id.item8_ce);
+
 
 
         //退出程序
@@ -235,15 +235,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //分享
-        buttonShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, ShareActivity.class);
-                startActivity(intent);
-            }
-        });
 
         oper = new CalendarDataOperation(this);
         ex = new ExpenseDataOperation(this);

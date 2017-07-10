@@ -16,6 +16,7 @@ import com.zucc.wl1145_mjy1136.personalassistant.db.CalendarDataOperation;
 import com.zucc.wl1145_mjy1136.personalassistant.db.MyCalendar;
 
 public class CalendarSpecificActivity extends Activity {
+    private Button shareButton;
     private Button editButton;
     private Button deleteButton;
     private Button backButton;
@@ -99,7 +100,28 @@ public class CalendarSpecificActivity extends Activity {
             }
         });
 
+
+        shareButton= (Button)findViewById(R.id.share_check_calendar);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1=new Intent(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_TEXT, textName.getText().toString()+textDate.getText().toString()+textPlace.getText().toString()+textDescription.getText().toString());
+                intent1.setType("text/plain");
+                startActivity(Intent.createChooser(intent1,"share"));
+            }
+        });
+
+
+
     }
+
+
+
+
+
+
+
 
     public void update() {
         CalendarDataOperation oper = new CalendarDataOperation(CalendarSpecificActivity.this);

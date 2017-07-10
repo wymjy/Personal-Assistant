@@ -181,37 +181,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/relative6_ce"/>
 
-        <RelativeLayout
-            android:id="@+id/relative8_ce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/image11_ce">
 
-            <Button
-                android:id="@+id/item8_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/item_selector"/>
-
-            <ImageView
-                android:id="@+id/image15_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/task"/>
-
-            <TextView
-                android:id="@+id/jiange8_ce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/image15_ce"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dip"
-                android:text="分享"/>
-
-        </RelativeLayout>
 
 
 
@@ -224,7 +194,7 @@
             android:background="@drawable/jiangetiao_ce"
             android:layout_marginLeft="7dip"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/relative8_ce"/>
+            android:layout_below="@id/image11_ce"/>
 
 
         <RelativeLayout

@@ -84,6 +84,36 @@ public class ExpenseDataOperation {
         cursor.close();
         return result;
     }
+    public Map<Long,Map<String,Double>> queryByUserGroup(){
+        Map<Long,Map<String,Double>> result = new TreeMap();
+        SQLiteDatabase db = helper.getReadableDatabase();	// 取得SQLiteDatabase
+        String sql = "select date/1000/60/60/24, sum(mount), mount_state from ExpenseItem where user_id='"
+                +UserDataOperation.currentUser+"' group by mount_state,date/1000/60/60/24;" ;	// 定义SQL
+        Cursor cursor = db.rawQuery(sql, null) ;		// 不设置查询参数
+        if(cursor.moveToFirst()){
+            do{
+                Map<String, Double> inmap = new TreeMap();
+                inmap.put(cursor.getString(2),cursor.getDouble(1));
+                if(result.containsKey(cursor.getLong(0)))
+                    result.get(cursor.getLong(0)).putAll(inmap);
+                else
+                    result.put(cursor.getLong(0), inmap);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return result;
+    }
+    public double maxMount(){
+        SQLiteDatabase db = helper.getReadableDatabase();	// 取得SQLiteDatabase
+        String sql = "select max(t.a) from (select sum(mount) as a from ExpenseItem where user_id='"
+                +UserDataOperation.currentUser+"'group by mount_state,date/1000/60/60/24) as t" ;
+        Cursor cursor = db.rawQuery(sql, null) ;
+        if(cursor.moveToFirst()){
+            return cursor.getDouble(0);
+        }
+        cursor.close();
+        return 0;
+    }
 
     public Map<String,Double> countMount(){
         Map<String,Double> result = new TreeMap();

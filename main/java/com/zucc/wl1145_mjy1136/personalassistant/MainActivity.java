@@ -30,6 +30,7 @@ import com.zucc.wl1145_mjy1136.personalassistant.db.MyCalendar;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseAddActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseMainActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.db.UserDataOperation;
+import com.zucc.wl1145_mjy1136.personalassistant.expense.ExpenseStatisticActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.user.LoginActivity;
 import com.zucc.wl1145_mjy1136.personalassistant.user.UserMainActivity;
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         expense1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, ExpenseMainActivity.class);
+                Intent intent=new Intent(MainActivity.this, ExpenseStatisticActivity.class);
                 startActivity(intent);
             }
         });

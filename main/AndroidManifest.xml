@@ -62,6 +62,7 @@
 
         <activity android:name=".calendar.CalendarSearchActivity" />
         <activity android:name=".WeChatCaptureActivity" />
+        <activity android:name=".expense.ExpenseStatisticActivity"/>
     </application>
 
 </manifest>

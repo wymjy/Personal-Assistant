@@ -32,6 +32,7 @@ public class WeChatCaptureActivity extends BaseCaptureActivity {
         autoScannerView.setCameraManager(cameraManager);
     }
 
+    //通过刷新来重绘视图
     @Override
     public SurfaceView getSurfaceView() {
         return (surfaceView == null) ? (SurfaceView) findViewById(R.id.preview_view) : surfaceView;
